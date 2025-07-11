@@ -8,12 +8,12 @@ package com.mycompany.project.kel.desktop.sarpas.view;
  *
  * @author AXIOO
  */
-public class Contoh extends javax.swing.JPanel {
+public class LoginPanel1 extends javax.swing.JPanel {
 
     /**
-     * Creates new form Contoh
+     * Creates new form LoginPanel1
      */
-    public Contoh() {
+    public LoginPanel1() {
         initComponents();
     }
 
@@ -26,30 +26,19 @@ public class Contoh extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(178, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(147, 147, 147))
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jButton1)
-                .addContainerGap(177, Short.MAX_VALUE))
+            .addGap(0, 300, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
