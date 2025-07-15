@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
     // Ganti 'db_inventaris_sekolah' dengan nama database yang Anda buat di phpMyAdmin
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/db_sarpras_sekolah_tadikamesra";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/lengkap";
     private static final String USER = "root"; // Username default MySQL XAMPP
     private static final String PASS = ""; // Password default MySQL XAMPP (kosong)
 

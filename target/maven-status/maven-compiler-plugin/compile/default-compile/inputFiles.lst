@@ -1,8 +1,10 @@
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\BarangDAO.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\DashboardPanel.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\LoginPanel1.java
+C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\model\User.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\util\DateConverter.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\util\DatabaseConnection.java
+C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\model\TestBarang.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\PeminjamanDAO.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\model\Barang.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakan.java
@@ -14,6 +16,7 @@ C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\controller\InventarisController.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\PeminjamanPanel.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\InventarisPanel.java
+C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\UserDAO.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\LoginPanel.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\MainFrame.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\controller\PeminjamanController.java
