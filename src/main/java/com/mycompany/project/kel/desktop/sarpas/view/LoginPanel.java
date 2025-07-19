@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.mycompany.project.kel.desktop.sarpas.view;
+import com.mycompany.project.kel.desktop.sarpas.controller.LoginController;
+import com.mycompany.project.kel.desktop.sarpas.model.User;
 
-
+import com.mycompany.project.kel.desktop.sarpas.util.GlobalAppState;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,14 +23,17 @@ import javax.swing.SwingUtilities;
 /**
  *
  * @author AXIOO
- */
+ */ 
 public class LoginPanel extends javax.swing.JPanel {
     private Runnable loginSuccessListener;
+    private LoginController loginController; 
+    
     /**
      * Creates new form LoginPanel
      */
     public LoginPanel() {
         initComponents();
+        this.loginController = new LoginController();
     }
 
     /**
@@ -64,7 +69,6 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel1.setText("Sistem Sarana & Prasarana ");
 
         txtUserId.setForeground(new java.awt.Color(204, 204, 204));
-        txtUserId.setText("Masukan Nis/Nip/Id");
         txtUserId.setToolTipText("");
         txtUserId.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtUserId.setCaretColor(new java.awt.Color(204, 204, 204));
@@ -74,7 +78,6 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
 
-        txtPassword.setText("jPasswordField1");
         txtPassword.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,7 +106,7 @@ public class LoginPanel extends javax.swing.JPanel {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(393, Short.MAX_VALUE)
+                .addContainerGap(466, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -154,42 +157,50 @@ public class LoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        String userId = txtUserId.getText();
+       String userId = txtUserId.getText();
         String password = new String(txtPassword.getPassword()); // Mengambil teks dari JPasswordField
 
         System.out.println("Tombol Login diklik!");
         System.out.println("User ID: " + userId);
-        System.out.println("Password: " + password);
+        // Penting: Jangan cetak password ke konsol di aplikasi nyata untuk keamanan
+        // System.out.println("Password: " + password); 
 
-        // --- Logika Verifikasi Login (Backend Developer akan mengganti ini nanti) ---
-        // Sementara pakai dummy user/pass: admin / admin123
-        boolean loginSukses = false;
-        if (userId.equals("admin") && password.equals("admin123")) {
-            loginSukses = true;
-        }
+        // --- GANTI SELURUH BLOK LOGIKA DUMMY INI ---
+        // boolean loginSukses = false;
+        // if (userId.equals("admin") && password.equals("admin123")) {
+        //     loginSukses = true;
+        // }
+        // --- DENGAN KODE BERIKUT ---
 
-        if (loginSukses) {
-            JOptionPane.showMessageDialog(this, "Login Berhasil!");
-            // Panggil listener yang akan memicu MainFrame untuk mengganti panel
+        // 1. Panggil LoginController untuk melakukan autentikasi ke database
+        User authenticatedUser = loginController.authenticate(userId, password); 
+
+        // 2. Periksa hasil autentikasi
+        if (authenticatedUser != null) { // Jika objek User dikembalikan, berarti login berhasil
+            
+            JOptionPane.showMessageDialog(this, "Login Berhasil! Selamat datang, " + authenticatedUser.getNamaLengkap() + "!");
+            
+            // 3. Simpan objek User yang berhasil login ke GlobalAppState
+            GlobalAppState.getInstance().setCurrentUser(authenticatedUser); 
+
+            // 4. Panggil listener untuk transisi ke halaman utama (Dashboard/Sidebar)
             if (loginSuccessListener != null) {
+                
                 loginSuccessListener.run(); // Ini akan memanggil onLoginSuccess() di MainFrame
             }
-            // Atau secara langsung memanggil MainFrame (jika Anda suka)
-            // JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(LoginPanel.this);
-            // if (parentFrame instanceof MainFrame) {
-            //     ((MainFrame) parentFrame).onLoginSuccess();
-            // }
-
         } else {
-            // Jika login gagal
+            // Jika login gagal (authenticatedUser adalah null)
             JOptionPane.showMessageDialog(this,
                     "NIS/NIP/ID atau Password salah.",
                     "Login Gagal",
                     JOptionPane.ERROR_MESSAGE);
             // Anda bisa tambahkan lblStatus.setText("NIS/NIP/ID atau Password salah.");
         }
+    
     }//GEN-LAST:event_btnLoginActionPerformed
-
+public void setLoginSuccessListener(Runnable listener) {
+    this.loginSuccessListener = listener;
+}
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         
     }//GEN-LAST:event_txtPasswordActionPerformed

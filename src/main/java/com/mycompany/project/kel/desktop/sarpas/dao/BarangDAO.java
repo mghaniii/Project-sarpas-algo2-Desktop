@@ -130,31 +130,31 @@ public class BarangDAO {
      * @param idBarang ID barang yang dicari.
      * @return Objek Barang jika ditemukan, null jika tidak.
      */
-    public Barang getBarangById(int idBarang) {
-        String sql = "SELECT id_barang, id_kategori, id_lokasi, kode_barang, nama_barang, jumlah_total, jumlah_tersedia, kondisi FROM barang WHERE id_barang = ?";
-        Barang barang = null;
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+    public Barang getBarangByKode(String kodeBarang) {
+    String sql = "SELECT id_barang, id_kategori, id_lokasi, kode_barang, nama_barang, jumlah_total, jumlah_tersedia, kondisi FROM barang WHERE kode_barang = ?";
+    Barang barang = null;
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setInt(1, idBarang);
-            ResultSet rs = pstmt.executeQuery();
+        pstmt.setString(1, kodeBarang);
+        ResultSet rs = pstmt.executeQuery();
 
-            if (rs.next()) {
-                barang = new Barang(
-                    rs.getInt("id_barang"),
-                    rs.getInt("id_kategori"),
-                    rs.getInt("id_lokasi"),
-                    rs.getString("kode_barang"),
-                    rs.getString("nama_barang"),
-                    rs.getInt("jumlah_total"),
-                    rs.getInt("jumlah_tersedia"),
-                    rs.getString("kondisi")
-                );
-            }
-        } catch (SQLException e) {
-            System.err.println("Error saat mendapatkan barang berdasarkan ID: " + e.getMessage());
-            e.printStackTrace();
+        if (rs.next()) {
+            barang = new Barang(
+                rs.getInt("id_barang"),
+                rs.getInt("id_kategori"),
+                rs.getInt("id_lokasi"),
+                rs.getString("kode_barang"),
+                rs.getString("nama_barang"),
+                rs.getInt("jumlah_total"),
+                rs.getInt("jumlah_tersedia"),
+                rs.getString("kondisi")
+            );
         }
-        return barang;
+    } catch (SQLException e) {
+        System.err.println("Error saat mendapatkan barang berdasarkan kode: " + e.getMessage());
+        e.printStackTrace();
     }
+    return barang;
+}
 }
