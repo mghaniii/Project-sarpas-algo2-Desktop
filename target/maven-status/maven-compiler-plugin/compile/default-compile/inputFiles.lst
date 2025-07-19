@@ -17,6 +17,7 @@ C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\DashboardPanel.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\LoginPanel1.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\util\DateConverter.java
+C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\model\Ruangan.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\util\DatabaseConnection.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\PeminjamanDAO.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\model\Barang.java
@@ -28,3 +29,4 @@ C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\UserDAO.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\util\GlobalAppState.java
 C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakanPanel.java
+C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\com\mycompany\project\kel\desktop\sarpas\dao\RuanganDAO.java

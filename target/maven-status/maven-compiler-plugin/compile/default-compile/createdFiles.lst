@@ -1,8 +1,11 @@
 com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakanPanel.class
 com\mycompany\project\kel\desktop\sarpas\view\MainFrame.class
+com\mycompany\project\kel\desktop\sarpas\dao\RuanganDAO.class
 com\mycompany\project\kel\desktop\sarpas\dao\UserDAO.class
 com\mycompany\project\kel\desktop\sarpas\model\LaporanKerusakan.class
 com\mycompany\project\kel\desktop\sarpas\model\TestBarang.class
+com\mycompany\project\kel\desktop\sarpas\view\PeminjamanPanel$1.class
+com\mycompany\project\kel\desktop\sarpas\model\Ruangan.class
 com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakan1$2.class
 com\mycompany\project\kel\desktop\sarpas\ProjectKel6DesktopSarpas$1.class
 com\mycompany\project\kel\desktop\sarpas\view\LoginPanel$1.class
@@ -11,11 +14,13 @@ com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakan1.class
 com\mycompany\project\kel\desktop\sarpas\view\SiswaProfilePanel.class
 com\mycompany\project\kel\desktop\sarpas\dao\LaporanKerusakanDAO.class
 com\mycompany\project\kel\desktop\sarpas\util\ValidationUtil.class
+com\mycompany\project\kel\desktop\sarpas\view\PeminjamanPanel$3.class
 com\mycompany\project\kel\desktop\sarpas\dao\PeminjamanDAO.class
 com\mycompany\project\kel\desktop\sarpas\model\Barang.class
 com\mycompany\project\kel\desktop\sarpas\view\PemeliharaanPanel.class
 com\mycompany\project\kel\desktop\sarpas\dao\BarangDAO.class
 com\mycompany\project\kel\desktop\sarpas\util\DateConverter.class
+com\mycompany\project\kel\desktop\sarpas\view\PeminjamanPanel$2.class
 com\mycompany\project\kel\desktop\sarpas\view\LoginPanel1.class
 com\mycompany\project\kel\desktop\sarpas\view\SidebarPanel.class
 com\mycompany\project\kel\desktop\sarpas\ProjectKel6DesktopSarpas.class
