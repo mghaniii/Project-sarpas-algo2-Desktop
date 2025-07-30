@@ -15,7 +15,7 @@ public class Pemeliharaan {
     // Variabel tambahan untuk tampilan (dari JOIN)
     private String namaBarang;
     private String namaPetugas;
-
+  private String kodeBarang; 
     // Constructor kosong (default)
     public Pemeliharaan() {
     }
@@ -37,6 +37,9 @@ public class Pemeliharaan {
     public int getIdPemeliharaan() {
         return idPemeliharaan;
     }
+    
+        public String getKodeBarang() { return kodeBarang; }
+    public void setKodeBarang(String kodeBarang) { this.kodeBarang = kodeBarang; }
 
     public void setIdPemeliharaan(int idPemeliharaan) {
         this.idPemeliharaan = idPemeliharaan;

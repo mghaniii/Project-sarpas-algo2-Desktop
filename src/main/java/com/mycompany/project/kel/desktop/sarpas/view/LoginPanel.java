@@ -20,6 +20,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import javax.swing.JFrame;       
 import javax.swing.SwingUtilities; 
 /**
@@ -34,10 +36,12 @@ public class LoginPanel extends javax.swing.JPanel {
      * Creates new form LoginPanel
      */
     public LoginPanel() {
+        
         initComponents();
         setupContactAdminLink();
         setButtonIcons();
         setLogoIcon();
+        setPlaceholder();
         this.loginController = new LoginController();
     }
 
@@ -59,6 +63,7 @@ public class LoginPanel extends javax.swing.JPanel {
         lblContactAdmin = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbllogo = new javax.swing.JLabel();
+        cbShowPassword = new javax.swing.JCheckBox();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -108,6 +113,16 @@ public class LoginPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel2.setText("Tadika Mesra");
 
+        cbShowPassword.setBackground(new java.awt.Color(255, 255, 255));
+        cbShowPassword.setFont(new java.awt.Font("Trebuchet MS", 1, 10)); // NOI18N
+        cbShowPassword.setText("Tampilkan Password");
+        cbShowPassword.setContentAreaFilled(false);
+        cbShowPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbShowPasswordActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -116,15 +131,6 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addContainerGap(467, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(244, 244, 244))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblContactAdmin)
-                        .addGap(292, 292, 292))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(200, 200, 200))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -132,7 +138,20 @@ public class LoginPanel extends javax.swing.JPanel {
                         .addGap(144, 144, 144))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(lbllogo)
-                        .addGap(269, 269, 269))))
+                        .addGap(269, 269, 269))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(cbShowPassword))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(244, 244, 244))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblContactAdmin)
+                        .addGap(293, 293, 293))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,11 +166,13 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addComponent(txtUserId, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cbShowPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblContactAdmin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -163,8 +184,8 @@ public class LoginPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,6 +241,14 @@ public void setLoginSuccessListener(Runnable listener) {
     private void txtUserIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserIdActionPerformed
+
+    private void cbShowPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShowPasswordActionPerformed
+       if (cbShowPassword.isSelected()) {
+    txtPassword.setEchoChar((char) 0); // Menampilkan karakter password
+} else {
+    txtPassword.setEchoChar('\u2022'); // Mengganti kembali menjadi bullet (•)
+} 
+    }//GEN-LAST:event_cbShowPasswordActionPerformed
  private void setupContactAdminLink() {
         // Pastikan Anda punya JLabel bernama lblContactAdmin di mode Design
         if (lblContactAdmin != null) {
@@ -307,7 +336,61 @@ public void setLoginSuccessListener(Runnable listener) {
         // btnInventaris.setIcon(ImageUtil.getIconFromBase64(inventarisIconBase64, iconSize, iconSize));
     }
 
+     private void setPlaceholder() {
+    // Placeholder untuk Username
+    txtUserId.setText("Masukkan Username / NIP / ID");
+    txtUserId.setForeground(Color.GRAY);
+
+    txtUserId.addFocusListener(new FocusAdapter() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (txtUserId.getText().equals("Masukkan Username / NIP / ID")) {
+                txtUserId.setText("");
+                txtUserId.setForeground(Color.BLACK);
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            if (txtUserId.getText().isEmpty()) {
+                txtUserId.setForeground(Color.GRAY);
+                txtUserId.setText("Masukkan Username / NIP / ID");
+            }
+        }
+    });
+
+    // Placeholder untuk Password
+    txtPassword.setText("Masukkan Password");
+    txtPassword.setForeground(Color.GRAY);
+    txtPassword.setEchoChar((char) 0); // Show plain text
+
+    txtPassword.addFocusListener(new FocusAdapter() {
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (String.valueOf(txtPassword.getPassword()).equals("Masukkan Password")) {
+                txtPassword.setText("");
+                txtPassword.setForeground(Color.BLACK);
+                txtPassword.setEchoChar('●');
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            if (String.valueOf(txtPassword.getPassword()).isEmpty()) {
+                txtPassword.setForeground(Color.GRAY);
+                txtPassword.setText("Masukkan Password");
+                txtPassword.setEchoChar((char) 0);
+            }
+        }
+    });
+
+    // Supaya saat pertama kali panel dibuka, tidak langsung fokus ke Jusername
+    SwingUtilities.invokeLater(() -> txtUserId.requestFocusInWindow());
+}
+     
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cbShowPassword;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

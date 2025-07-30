@@ -111,4 +111,50 @@ public class PemeliharaanDAO {
     }
 }
     
+    //////////Digunakan untuk riwayat perawatan
+public List<Pemeliharaan> getFilteredPemeliharaan(String keyword, String status) {
+    List<Pemeliharaan> daftarJadwal = new ArrayList<>();
+    // Query ini mengambil semua data yang dibutuhkan untuk 8 kolom
+    String sql = "SELECT p.*, b.nama_barang, b.kode_barang, u.nama_lengkap AS nama_petugas " +
+                 "FROM pelihara p " +
+                 "JOIN barang b ON p.id_barang = b.id_barang " +
+                 "JOIN users u ON p.id_users_petugas = u.id_users " +
+                 "WHERE b.nama_barang LIKE ? ";
+
+    // Tambahkan filter status jika diperlukan
+    if (!"Semua".equalsIgnoreCase(status)) {
+        sql += "AND p.status = ? ";
+    }
+    sql += "ORDER BY p.tanggal_jadwal DESC";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        
+        ps.setString(1, "%" + keyword + "%"); // Parameter untuk LIKE
+        if (!"Semua".equalsIgnoreCase(status)) {
+            ps.setString(2, status);
+        }
+
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                Pemeliharaan p = new Pemeliharaan();
+                p.setIdPemeliharaan(rs.getInt("id_pemeliharaan"));
+                p.setTanggalJadwal(rs.getDate("tanggal_jadwal"));
+                p.setTanggalSelesai(rs.getDate("tanggal_selesai")); // Ambil tanggal selesai
+                p.setNamaBarang(rs.getString("nama_barang"));
+                p.setKodeBarang(rs.getString("kode_barang")); // Ambil kode barang
+                p.setNamaPetugas(rs.getString("nama_petugas"));
+                p.setStatus(rs.getString("status"));
+                p.setCatatanTambahan(rs.getString("catatan_tambahan")); // Ambil catatan
+                daftarJadwal.add(p);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return daftarJadwal;
+}
+    
+    
+    
 }

@@ -80,9 +80,15 @@ public class MainFrame extends JFrame {
                 case "peminjaman fasilitas":
                     handlePeminjamanFasilitasClick();
                     break;
-                case "jadwal perawatan":
-                    showPanel(new JadwalPerawatanPanel());
-                    break;
+              case "jadwal perawatan": // Ini adalah teks dari btnSubJadwal
+    showPanel(new JadwalPerawatanPanel()); // Panel untuk mengelola jadwal
+    break;
+
+case "riwayat perawatan": // Ini adalah teks dari btnSubRiwayat
+    // Buat panel baru bernama RiwayatPerawatanPanel.java
+    // Untuk sementara, kita bisa gunakan dummy panel
+    showPanel(new RiwayatPerawatanPanel()); 
+    break;
                 case "profile":
                     handleProfileClick();
                     break;

@@ -16,19 +16,22 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="btnProfile" max="32767" attributes="0"/>
-                  <Component id="btnLaporan" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnInventaris" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnPeminjaman" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnPerawatan" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnDashboard" alignment="0" max="32767" attributes="0"/>
-                  <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
-                  <Component id="btnlogo" alignment="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jButton1" min="-2" pref="159" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="btnProfile" max="32767" attributes="0"/>
+                      <Component id="btnLaporan" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnInventaris" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnPeminjaman" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnPerawatanUtama" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnDashboard" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btnlogo" alignment="0" max="32767" attributes="0"/>
+                      <Component id="panelDropdownPerawatan" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="604" max="32767" attributes="0"/>
+              <EmptySpace pref="572" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -43,15 +46,17 @@
               <Component id="btnDashboard" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="btnInventaris" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="btnPeminjaman" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="btnLaporan" min="-2" pref="35" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnPerawatan" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnPerawatanUtama" min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="panelDropdownPerawatan" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="35" max="-2" attributes="0"/>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,6 +66,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\icondashboard.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Dashboard"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -77,6 +85,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\Barang_icon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Inventaris Barang"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -92,6 +103,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\iconpeminjaman.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Peminjaman Fasilitas"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -104,6 +118,9 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\laporan_icon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Laporan Kerusakan"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -115,6 +132,9 @@
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\akunicon.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Profile"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -135,19 +155,22 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnPerawatan">
+    <Component class="javax.swing.JButton" name="btnPerawatanUtama">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Jadwal Perawatan"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\iconpemeliharaan.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Jadwal Perawatan   V"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerawatanActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPerawatanUtamaActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnlogo">
@@ -164,5 +187,58 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnlogoActionPerformed"/>
       </Events>
     </Component>
+    <Container class="javax.swing.JPanel" name="panelDropdownPerawatan">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ef" green="ef" red="ef" type="rgb"/>
+        </Property>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBoxLayout">
+        <Property name="axis" type="int" value="1"/>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="btnSubJadwal">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Trebuchet MS" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\jadwalicon.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Jadwal Perawatan"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder/>
+              </Border>
+            </Property>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubJadwalActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSubRiwayat">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Trebuchet MS" size="14" style="0"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="C:\Users\AXIOO\Documents\NetBeansProjects\Project-kel-6-desktop-sarpas\src\main\java\img\img\riwayaticon.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Riwayat Perawatan"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                <EmptyBorder/>
+              </Border>
+            </Property>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubRiwayatActionPerformed"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
