@@ -108,10 +108,11 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnSubRiwayat = new javax.swing.JButton();
 
         btnDashboard.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        btnDashboard.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\icondashboard.png")); // NOI18N
+        btnDashboard.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\Dashboard_icon.png")); // NOI18N
         btnDashboard.setText("Dashboard");
         btnDashboard.setBorder(null);
         btnDashboard.setContentAreaFilled(false);
+        btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setPreferredSize(new java.awt.Dimension(87, 22));
 
         btnInventaris.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
@@ -119,6 +120,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnInventaris.setText("Inventaris Barang");
         btnInventaris.setBorder(null);
         btnInventaris.setContentAreaFilled(false);
+        btnInventaris.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInventaris.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventarisActionPerformed(evt);
@@ -130,23 +132,28 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnPeminjaman.setText("Peminjaman Fasilitas");
         btnPeminjaman.setBorder(null);
         btnPeminjaman.setContentAreaFilled(false);
+        btnPeminjaman.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnLaporan.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnLaporan.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\laporan_icon.png")); // NOI18N
         btnLaporan.setText("Laporan Kerusakan");
         btnLaporan.setBorder(null);
         btnLaporan.setContentAreaFilled(false);
+        btnLaporan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnProfile.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnProfile.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\akunicon.png")); // NOI18N
         btnProfile.setText("Profile");
         btnProfile.setBorder(null);
         btnProfile.setContentAreaFilled(false);
+        btnProfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         jButton1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\Screenshot 2025-07-30 191034.png")); // NOI18N
         jButton1.setText("Logout");
         jButton1.setBorder(null);
         jButton1.setContentAreaFilled(false);
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         btnPerawatanUtama.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnPerawatanUtama.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\iconpemeliharaan.png")); // NOI18N
@@ -229,7 +236,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
                 .addComponent(btnPeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPerawatanUtama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelDropdownPerawatan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

@@ -2,8 +2,8 @@ package com.mycompany.project.kel.desktop.sarpas;
 
 import com.mycompany.project.kel.desktop.sarpas.view.MainFrame;
 import com.mycompany.project.kel.desktop.sarpas.util.DatabaseConnection;
-import com.mycompany.project.kel.desktop.sarpas.model.User; // Pastikan User.java sudah diimpor
-import com.mycompany.project.kel.desktop.sarpas.dao.UserDAO; // Pastikan UserDAO.java sudah diimpor
+import com.mycompany.project.kel.desktop.sarpas.model.User; // User.java sudah diimpor
+import com.mycompany.project.kel.desktop.sarpas.dao.UserDAO; // UserDAO.java sudah diimpor
 
 import javax.swing.SwingUtilities;
 import java.sql.Connection;

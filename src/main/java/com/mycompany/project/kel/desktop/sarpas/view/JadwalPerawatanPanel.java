@@ -92,19 +92,28 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
 
         panelTambahJadwal.setBackground(new java.awt.Color(255, 255, 255));
 
+        comboBarang.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         comboBarang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         comboBarang.setMaximumSize(new java.awt.Dimension(72, 22));
 
+        comboPetugas.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         comboPetugas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         comboPetugas.setMaximumSize(new java.awt.Dimension(72, 22));
 
+        txtJenisPerawatan.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         txtJenisPerawatan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtJenisPerawatan.setMaximumSize(new java.awt.Dimension(64, 22));
+        txtJenisPerawatan.setMaximumSize(new java.awt.Dimension(72, 22));
+        txtJenisPerawatan.setMinimumSize(new java.awt.Dimension(72, 22));
+        txtJenisPerawatan.setPreferredSize(new java.awt.Dimension(72, 22));
 
+        txtTanggalJadwal.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         txtTanggalJadwal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        txtTanggalJadwal.setMaximumSize(new java.awt.Dimension(64, 22));
+        txtTanggalJadwal.setMaximumSize(new java.awt.Dimension(72, 22));
+        txtTanggalJadwal.setMinimumSize(new java.awt.Dimension(72, 22));
+        txtTanggalJadwal.setPreferredSize(new java.awt.Dimension(72, 22));
 
         txtCatatan.setColumns(20);
+        txtCatatan.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         txtCatatan.setRows(5);
         txtCatatan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane2.setViewportView(txtCatatan);
@@ -127,6 +136,7 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setText("Jelaskan Jenis perawatan");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Catatan");
 
         javax.swing.GroupLayout panelTambahJadwalLayout = new javax.swing.GroupLayout(panelTambahJadwal);
@@ -136,35 +146,36 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
                 .addGroup(panelTambahJadwalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTambahJadwalLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelTambahJadwalLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(panelTambahJadwalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addGroup(panelTambahJadwalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
-                                .addComponent(comboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(comboPetugas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                                .addGap(36, 36, 36)
                                 .addGroup(panelTambahJadwalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(panelTambahJadwalLayout.createSequentialGroup()
                                         .addGap(6, 6, 6)
                                         .addComponent(jLabel3))
                                     .addComponent(txtTanggalJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(6, 6, 6)
+                                .addComponent(jLabel2)))
                         .addGroup(panelTambahJadwalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(jLabel4))
                             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
                                 .addGap(34, 34, 34)
-                                .addComponent(txtJenisPerawatan, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelTambahJadwalLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtJenisPerawatan, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(50, Short.MAX_VALUE))
             .addGroup(panelTambahJadwalLayout.createSequentialGroup()
                 .addGap(232, 232, 232)
@@ -195,7 +206,6 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
         );
 
         comboStatus.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
-        comboStatus.setForeground(new java.awt.Color(255, 255, 255));
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboStatus.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         comboStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -222,13 +232,11 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelTambahJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUpdateStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 103, Short.MAX_VALUE))
+                            .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 109, Short.MAX_VALUE))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -251,7 +259,7 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(panelTambahJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(269, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

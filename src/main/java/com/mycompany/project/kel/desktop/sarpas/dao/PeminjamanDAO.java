@@ -246,5 +246,5 @@ public boolean updateStatusPeminjaman(int idPeminjaman, String newStatus) {
 
  
  
-    // Anda bisa menambahkan metode lain: getPeminjamanById, updatePeminjaman, deletePeminjaman
+    // bisa menambahkan metode lain: getPeminjamanById, updatePeminjaman, deletePeminjaman
 }

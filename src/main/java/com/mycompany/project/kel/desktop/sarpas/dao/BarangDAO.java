@@ -258,7 +258,7 @@ public Barang getBarangById(int idBarang) {
     
     
     public int hitungSemuaAsetRusak() {
-    // Query ini menggunakan LIKE untuk mencari semua baris yang kolom
+    // Query ini menggunakan LIKE untuk mencari semua baris yang kolom SBD
     // kondisinya mengandung kata "Rusak"
     String sql = "SELECT COUNT(*) FROM barang WHERE kondisi LIKE '%Rusak%'";
     try (Connection conn = DatabaseConnection.getConnection();

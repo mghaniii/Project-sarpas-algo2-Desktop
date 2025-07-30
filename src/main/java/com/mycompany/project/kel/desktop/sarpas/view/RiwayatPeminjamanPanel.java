@@ -66,12 +66,15 @@ public class RiwayatPeminjamanPanel extends javax.swing.JPanel {
         btnSetujui.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnTolak.setBackground(new java.awt.Color(0, 153, 204));
+        btnTolak.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         btnTolak.setForeground(new java.awt.Color(255, 255, 255));
         btnTolak.setText("Tolak");
         btnTolak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         txtKeperluan.setEditable(false);
+        txtKeperluan.setBackground(new java.awt.Color(255, 255, 255));
         txtKeperluan.setColumns(20);
+        txtKeperluan.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         txtKeperluan.setRows(5);
         txtKeperluan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane2.setViewportView(txtKeperluan);
@@ -230,48 +233,58 @@ public class RiwayatPeminjamanPanel extends javax.swing.JPanel {
 private void setupListeners() {
     // Listener untuk JTable, aktif saat baris dipilih
     tblPeminjaman.getSelectionModel().addListSelectionListener(e -> {
-        // ... (try-catch block Anda tetap di sini) ...
-        if (!e.getValueIsAdjusting() && tblPeminjaman.getSelectedRow() != -1) {
-            int selectedRow = tblPeminjaman.getSelectedRow();
-            
-            // Ambil ID dari kolom 0
-            selectedPeminjamanId = (int) tableModel.getValueAt(selectedRow, 0);
+        // Bungkus semua logika dengan try-catch agar aman
+        try {
+            if (!e.getValueIsAdjusting() && tblPeminjaman.getSelectedRow() != -1) {
+                int selectedRow = tblPeminjaman.getSelectedRow();
+                
+                // Ambil ID dari kolom pertama (indeks 0)
+                Object idObject = tableModel.getValueAt(selectedRow, 0);
+                selectedPeminjamanId = Integer.parseInt(idObject.toString());
 
-            // Ambil STATUS dari kolom terakhir (indeks 4) untuk logika tombol
-            String status = tableModel.getValueAt(selectedRow, 4).toString();
+                // Ambil STATUS dari kolom terakhir (indeks 4)
+                String status = tableModel.getValueAt(selectedRow, 5).toString();
 
-            // Ambil detail keperluan untuk ditampilkan di JTextArea
-            Peminjaman selectedPeminjaman = getSelectedPeminjamanFromList(selectedPeminjamanId);
-            if (selectedPeminjaman != null) {
-                txtKeperluan.setText(selectedPeminjaman.getKeperluan());
+                // --- INI KODE DEBUG BARU ---
+                // Kita akan mencetak status persis seperti yang dibaca dari tabel
+                System.out.println("DEBUG: Status dari tabel adalah -> '" + status + "'");
+                // ---------------------------
+
+                // Ambil detail keperluan untuk ditampilkan di JTextArea
+                Peminjaman selectedPeminjaman = getSelectedPeminjamanFromList(selectedPeminjamanId);
+                if (selectedPeminjaman != null) {
+                    txtKeperluan.setText(selectedPeminjaman.getKeperluan());
+                }
+
+                // --- PERBAIKAN: Gunakan .trim() untuk menghapus spasi tak terlihat ---
+                if ("Menunggu Persetujuan".equalsIgnoreCase(status.trim())) {
+                    btnSetujui.setEnabled(true);
+                    btnTolak.setEnabled(true);
+                    btnKembali.setEnabled(false);
+                } else if ("Disetujui".equalsIgnoreCase(status.trim())) {
+                    btnSetujui.setEnabled(false);
+                    btnTolak.setEnabled(false);
+                    btnKembali.setEnabled(true);
+                } else { // Jika statusnya "Ditolak" atau "Sudah Dikembalikan"
+                    btnSetujui.setEnabled(false);
+                    btnTolak.setEnabled(false);
+                    btnKembali.setEnabled(false);
+                }
             }
-
-            // Logika untuk mengaktifkan tombol yang sesuai
-            if ("Menunggu Persetujuan".equalsIgnoreCase(status)) {
-                btnSetujui.setEnabled(true);
-                btnTolak.setEnabled(true);
-                btnKembali.setEnabled(false);
-            } else if ("Disetujui".equalsIgnoreCase(status)) {
-                btnSetujui.setEnabled(false);
-                btnTolak.setEnabled(false);
-                btnKembali.setEnabled(true);
-            } else { // Jika statusnya "Ditolak" atau "Sudah Dikembalikan"
-                btnSetujui.setEnabled(false);
-                btnTolak.setEnabled(false);
-                btnKembali.setEnabled(false);
-            }
+        } catch (Exception ex) {
+            System.err.println("Terjadi error saat memilih baris tabel!");
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Gagal memproses baris yang dipilih. Cek console untuk detail.", "Error", JOptionPane.ERROR_MESSAGE);
+            updateButtonState(false);
         }
     });
 
-    // Listener untuk tombol "Setujui"
+    // Listener untuk tombol-tombol
     btnSetujui.addActionListener(e -> updateStatus("Disetujui"));
-
-    // Listener untuk tombol "Tolak"
     btnTolak.addActionListener(e -> updateStatus("Ditolak"));
-    
-    // --- TAMBAHKAN LISTENER UNTUK TOMBOL BARU ---
     btnKembali.addActionListener(e -> updateStatus("Sudah Dikembalikan"));
 }
+
 
    private Peminjaman getSelectedPeminjamanFromList(int id) {
         List<Peminjaman> daftarPeminjaman = peminjamanDAO.getAllPeminjaman();

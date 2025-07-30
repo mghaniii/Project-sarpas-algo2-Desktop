@@ -11,7 +11,7 @@ public class LoginController {
     }
 
     public User authenticate(String userId, String password) {
-        // DEBUG: Cetak userId dan password yang diterima controller
+        // DEBUG: Cetak userId dan password yang diterima controller / Test
         System.out.println("DEBUG LoginController: Menerima userId = " + userId + ", password = [PASSWORD TERSEMBUNYI]");
 
         // Panggil metode authenticate dari UserDAO
