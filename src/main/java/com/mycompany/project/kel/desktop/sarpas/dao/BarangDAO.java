@@ -157,4 +157,120 @@ public class BarangDAO {
     }
     return barang;
 }
+    
+    public List<Barang> searchBarang(String keyword) {
+        List<Barang> daftarBarang = new ArrayList<>();
+        // Menggunakan LIKE untuk pencarian parsial, dan LOWER untuk case-insensitive
+        String sql = "SELECT id_barang, id_kategori, id_lokasi, kode_barang, nama_barang, jumlah_total, jumlah_tersedia, kondisi " +
+                     "FROM barang " +
+                     "WHERE LOWER(nama_barang) LIKE ? OR LOWER(kode_barang) LIKE ?"; // <<< Perubahan di sini
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            String searchKeyword = "%" + keyword.toLowerCase() + "%"; // Tambahkan wildcard %
+            pstmt.setString(1, searchKeyword);
+            pstmt.setString(2, searchKeyword);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Barang barang = new Barang(
+                        rs.getInt("id_barang"),
+                        rs.getInt("id_kategori"),
+                        rs.getInt("id_lokasi"),
+                        rs.getString("kode_barang"),
+                        rs.getString("nama_barang"),
+                        rs.getInt("jumlah_total"),
+                        rs.getInt("jumlah_tersedia"),
+                        rs.getString("kondisi")
+                    );
+                    daftarBarang.add(barang);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error saat mencari barang: " + e.getMessage());
+            e.printStackTrace();
+        }
+        return daftarBarang;
+    }
+
+   // Di dalam file BarangDAO.java
+
+public Barang getBarangById(int idBarang) {
+    Barang barang = null;
+    String sql = "SELECT * FROM barang WHERE id_barang = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+
+        ps.setInt(1, idBarang); // Set parameter ID untuk query
+
+        try (ResultSet rs = ps.executeQuery()) {
+            // Jika data ditemukan, buat objek Barang
+            if (rs.next()) {
+                barang = new Barang(
+                    rs.getInt("id_barang"),
+                    rs.getInt("id_kategori"),
+                    rs.getInt("id_lokasi"),
+                    rs.getString("kode_barang"),
+                    rs.getString("nama_barang"),
+                    rs.getInt("jumlah_total"),
+                    rs.getInt("jumlah_tersedia"),
+                    rs.getString("kondisi")
+                );
+            }
+        }
+    } catch (SQLException e) {
+        System.err.println("Error saat mengambil barang by ID: " + e.getMessage());
+        e.printStackTrace();
+    }
+    return barang; // Akan mengembalikan objek Barang jika ditemukan, atau null jika tidak
+}
+    public int hitungTotalAset() {
+    String sql = "SELECT COUNT(*) FROM barang";
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0; // Mengembalikan 0 jika terjadi error
+}
+    
+    
+    public int hitungAsetByKondisi(String kondisi) {
+    String sql = "SELECT COUNT(*) FROM barang WHERE kondisi = ?";
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setString(1, kondisi);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0; // Mengembalikan 0 jika terjadi error
+}
+    
+    
+    public int hitungSemuaAsetRusak() {
+    // Query ini menggunakan LIKE untuk mencari semua baris yang kolom
+    // kondisinya mengandung kata "Rusak"
+    String sql = "SELECT COUNT(*) FROM barang WHERE kondisi LIKE '%Rusak%'";
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement ps = conn.prepareStatement(sql);
+         ResultSet rs = ps.executeQuery()) {
+        if (rs.next()) {
+            return rs.getInt(1);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return 0;
+}
+    
 }

@@ -4,14 +4,14 @@ package com.mycompany.project.kel.desktop.sarpas.model;
 
 public class Barang {
     // Atribut sesuai dengan kolom tabel 'barang'
-    private int idBarang;        // id_barang INT AUTO_INCREMENT PRIMARY KEY
-    private int idKategori;      // id_kategori INT
-    private int idLokasi;        // id_lokasi INT
-    private String kodeBarang;   // kode_barang VARCHAR
-    private String namaBarang;   // nama_barang VARCHAR
-    private int jumlahTotal;     // jumlah_total INT
-    private int jumlahTersedia;  // jumlah_tersedia INT
-    private String kondisi;      // kondisi VARCHAR (e.g., 'Baik', 'Rusak', 'Dalam Perbaikan')
+    private int idBarang;       // id_barang INT AUTO_INCREMENT PRIMARY KEY
+    private int idKategori;     // id_kategori INT
+    private int idLokasi;       // id_lokasi INT
+    private String kodeBarang;  // kode_barang VARCHAR
+    private String namaBarang;  // nama_barang VARCHAR
+    private int jumlahTotal;    // jumlah_total INT
+    private int jumlahTersedia; // jumlah_tersedia INT
+    private String kondisi;     // kondisi VARCHAR (e.g., 'Baik', 'Rusak', 'Dalam Perbaikan')
 
     // --- CONSTRUCTOR ---
     // Constructor untuk membuat objek Barang baru (tanpa ID dari DB)
@@ -60,18 +60,11 @@ public class Barang {
     public String getKondisi() { return kondisi; }
     public void setKondisi(String kondisi) { this.kondisi = kondisi; }
 
-    // --- toString() untuk debugging ---
+    // --- toString() untuk JComboBox ---
     @Override
     public String toString() {
-        return "Barang{" +
-               "idBarang=" + idBarang +
-               ", idKategori=" + idKategori +
-               ", idLokasi=" + idLokasi +
-               ", kodeBarang='" + kodeBarang + '\'' +
-               ", namaBarang='" + namaBarang + '\'' +
-               ", jumlahTotal=" + jumlahTotal +
-               ", jumlahTersedia=" + jumlahTersedia +
-               ", kondisi='" + kondisi + '\'' +
-               '}';
+        // Metode ini akan dipanggil oleh JComboBox.
+        // Kita hanya ingin menampilkan nama barangnya saja.
+        return this.namaBarang;
     }
 }

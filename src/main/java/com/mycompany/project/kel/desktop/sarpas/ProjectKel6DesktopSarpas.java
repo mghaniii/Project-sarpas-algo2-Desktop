@@ -29,9 +29,10 @@ public class ProjectKel6DesktopSarpas {
         // --- KODE TEST OTENTIKASI BARU (Tambahkan di sini) ---
         System.out.println("--- Memulai Tes Otentikasi User ---");
         UserDAO userDAO = new UserDAO();
-
-        String testUsername = "budi.santoso"; // <<-- PASTIKAN INI SESUAI DENGAN DB ANDA
-        String testPassword = "budi123";      // <<-- PASTIKAN INI SESUAI DENGAN DB ANDA
+String testUsername = "admin_sarpas"; // <<-- GANTI INI
+String testPassword = "sarpas123"; 
+//        String testUsername = "budi.santoso"; // <<-- PASTIKAN INI SESUAI DENGAN DB ANDA
+//        String testPassword = "budi123";      // <<-- PASTIKAN INI SESUAI DENGAN DB ANDA
 
         System.out.println("Menguji otentikasi untuk username: " + testUsername + ", password: " + testPassword);
         User authenticatedUser = userDAO.authenticate(testUsername, testPassword);

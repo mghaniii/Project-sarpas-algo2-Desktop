@@ -12,7 +12,8 @@ public class LaporanKerusakan {
     private String deskripsiKerusakan;
     private String urlFotoKerusakan;
     private String statusLaporan; // "Belum Diproses", "Sedang Diproses", "Selesai Diperbaiki"
-
+     private String kodeBarang; 
+ private String namaBarang;
     // Constructor untuk laporan baru (tanpa ID dan tanggal dari DB)
     public LaporanKerusakan(int idBarang, String namaPelapor, String jenisKerusakan,
                             String lokasiAlat, String deskripsiKerusakan, String urlFotoKerusakan) {
@@ -36,6 +37,9 @@ public class LaporanKerusakan {
     }
 
     // Getter dan Setter
+     public String getNamaBarang() { return namaBarang; }
+    public void setNamaBarang(String namaBarang) { this.namaBarang = namaBarang; }
+    
     public int getIdLaporan() { return idLaporan; }
     public void setIdLaporan(int idLaporan) { this.idLaporan = idLaporan; }
 
@@ -45,7 +49,9 @@ public class LaporanKerusakan {
     public String getNamaPelapor() { return namaPelapor; }
     public void setNamaPelapor(String namaPelapor) { this.namaPelapor = namaPelapor; }
 
-    public Timestamp getTanggalPelaporan() { return tanggalPelaporan; }
+   public Timestamp getTanggalPelaporan() { 
+    return tanggalPelaporan; 
+}
     public void setTanggalPelaporan(Timestamp tanggalPelaporan) { this.tanggalPelaporan = tanggalPelaporan; }
 
     public String getJenisKerusakan() { return jenisKerusakan; }
@@ -62,7 +68,8 @@ public class LaporanKerusakan {
 
     public String getStatusLaporan() { return statusLaporan; }
     public void setStatusLaporan(String statusLaporan) { this.statusLaporan = statusLaporan; }
-
+    public String getKodeBarang() { return kodeBarang; }
+    public void setKodeBarang(String kodeBarang) { this.kodeBarang = kodeBarang; }
     @Override
     public String toString() {
         return "LaporanKerusakan{" + "idLaporan=" + idLaporan + ", idBarang=" + idBarang + ", namaPelapor=" + namaPelapor + ", statusLaporan=" + statusLaporan + '}';

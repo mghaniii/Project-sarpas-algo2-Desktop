@@ -120,35 +120,59 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         taDeskripsiKerusakan = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        btnLaporkan = new javax.swing.JButton();
+        btnLaporkan = new com.mycompany.project.kel.desktop.sarpas.view.RoundedButton();
         btnPilihFoto = new javax.swing.JButton();
         txtFotoPath = new javax.swing.JTextField();
-        btnClearForm = new javax.swing.JButton();
+        btnClearForm = new com.mycompany.project.kel.desktop.sarpas.view.RoundedButton();
         jLabel7 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel1.setText("Nama  Pelapor");
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel2.setText("Tanggal pelaporan");
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel3.setText("Kode Barang");
 
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel4.setText("Lokasi Alat");
 
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel5.setText("Deskripsi Kerusakan");
+
+        txtNamaPelapor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtTanggalPelaporan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtKodeBarangRusak.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        txtLokasiAlat.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         taDeskripsiKerusakan.setColumns(20);
         taDeskripsiKerusakan.setRows(5);
+        taDeskripsiKerusakan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(taDeskripsiKerusakan);
 
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jLabel6.setText("Upload Foto Kerusakan");
 
+        btnLaporkan.setBackground(new java.awt.Color(0, 153, 204));
+        btnLaporkan.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        btnLaporkan.setForeground(new java.awt.Color(255, 255, 255));
         btnLaporkan.setText("Laporkan");
+        btnLaporkan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnLaporkan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLaporkanActionPerformed(evt);
             }
         });
 
+        btnPilihFoto.setBackground(new java.awt.Color(0, 153, 204));
+        btnPilihFoto.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        btnPilihFoto.setForeground(new java.awt.Color(255, 255, 255));
         btnPilihFoto.setText("Pilih foto");
 
         txtFotoPath.addActionListener(new java.awt.event.ActionListener() {
@@ -157,7 +181,11 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
             }
         });
 
+        btnClearForm.setBackground(new java.awt.Color(0, 153, 204));
+        btnClearForm.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        btnClearForm.setForeground(new java.awt.Color(255, 255, 255));
         btnClearForm.setText("Clear Form");
+        btnClearForm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setText("max 2mb");
 
@@ -176,28 +204,25 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5))
                         .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNamaPelapor, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTanggalPelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtKodeBarangRusak, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtLokasiAlat, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1)
+                            .addComponent(txtNamaPelapor)
+                            .addComponent(txtTanggalPelaporan)
+                            .addComponent(txtKodeBarangRusak)
+                            .addComponent(txtLokasiAlat)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(24, 24, 24)
-                        .addComponent(txtFotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnClearForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPilihFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnClearForm)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnPilihFoto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel7)))))
-                .addContainerGap(95, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLaporkan)
-                .addGap(30, 30, 30))
+                            .addComponent(jLabel7)
+                            .addComponent(btnLaporkan, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,7 +237,7 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
                     .addComponent(txtTanggalPelaporan, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtKodeBarangRusak))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -225,20 +250,17 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(btnPilihFoto)
                     .addComponent(txtFotoPath, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnLaporkan)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnClearForm)
-                        .addGap(15, 15, 15))))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnClearForm, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLaporkan, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(69, 69, 69))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -299,7 +321,12 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
 
         String urlFoto = null;
         // ... (Logika upload foto, sama seperti sebelumnya) ...
-
+ 
+            if (selectedFile != null) {
+                // Jika ada file yang dipilih, ambil alamat path-nya
+                urlFoto = selectedFile.getAbsolutePath();
+            }
+            // --- AKHIR PERBAIKAN ---
 
         // Buat objek LaporanKerusakan
         LaporanKerusakan newLaporan = new LaporanKerusakan(

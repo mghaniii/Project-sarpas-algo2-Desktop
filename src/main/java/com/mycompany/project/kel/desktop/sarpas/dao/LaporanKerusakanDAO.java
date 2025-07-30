@@ -53,33 +53,45 @@ public class LaporanKerusakanDAO {
      * Mendapatkan daftar semua laporan kerusakan.
      * @return List objek LaporanKerusakan.
      */
-    public List<LaporanKerusakan> getAllLaporanKerusakan() {
-        List<LaporanKerusakan> daftarLaporan = new ArrayList<>();
-        String sql = "SELECT id_laporan, id_barang, nama_pelapor, tanggal_pelaporan, jenis_kerusakan, lokasi_alat, deskripsi_kerusakan, url_foto_kerusakan, status_laporan FROM laporan_kerusakan";
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);
-             ResultSet rs = pstmt.executeQuery()) {
+// Di dalam file LaporanKerusakanDAO.java
 
-            while (rs.next()) {
-                LaporanKerusakan laporan = new LaporanKerusakan(
-                    rs.getInt("id_laporan"),
-                    rs.getInt("id_barang"),
-                    rs.getString("nama_pelapor"),
-                    rs.getTimestamp("tanggal_pelaporan"),
-                    rs.getString("jenis_kerusakan"),
-                    rs.getString("lokasi_alat"),
-                    rs.getString("deskripsi_kerusakan"),
-                    rs.getString("url_foto_kerusakan"),
-                    rs.getString("status_laporan")
-                );
-                daftarLaporan.add(laporan);
-            }
-        } catch (SQLException e) {
-            System.err.println("Error saat mengambil semua laporan kerusakan: " + e.getMessage());
-            e.printStackTrace();
+public List<LaporanKerusakan> getAllLaporanKerusakan() {
+    List<LaporanKerusakan> daftarLaporan = new ArrayList<>();
+    // Query ini mengambil semua data dari laporan_kerusakan DAN nama_barang dari tabel barang
+    String sql = "SELECT lk.*, b.nama_barang, b.kode_barang, l.nama_lokasi " +
+                 "FROM laporan_kerusakan lk " +
+                 "JOIN barang b ON lk.id_barang = b.id_barang " +
+                 "JOIN lokasi l ON b.id_lokasi = l.id_lokasi"; // JOIN ke tabel lokasi
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql);
+         ResultSet rs = pstmt.executeQuery()) {
+
+        while (rs.next()) {
+            // Buat objek LaporanKerusakan menggunakan constructor lengkap Anda
+            LaporanKerusakan laporan = new LaporanKerusakan(
+                rs.getInt("id_laporan"),
+                rs.getInt("id_barang"),
+                rs.getString("nama_pelapor"),
+                rs.getTimestamp("tanggal_pelaporan"),
+                rs.getString("jenis_kerusakan"),
+                rs.getString("lokasi_alat"),
+                rs.getString("deskripsi_kerusakan"),
+                rs.getString("url_foto_kerusakan"),
+                rs.getString("status_laporan")
+            );
+
+            // Set namaBarang yang kita dapat dari JOIN
+            laporan.setNamaBarang(rs.getString("nama_barang"));
+            laporan.setKodeBarang(rs.getString("kode_barang")); 
+                laporan.setLokasiAlat(rs.getString("nama_lokasi"));
+            daftarLaporan.add(laporan);
         }
-        return daftarLaporan;
+    } catch (SQLException e) {
+        System.err.println("Error saat mengambil semua laporan kerusakan: " + e.getMessage());
+        e.printStackTrace();
     }
+    return daftarLaporan;
+}
 
     /**
      * Mengupdate status laporan kerusakan.
@@ -101,6 +113,38 @@ public class LaporanKerusakanDAO {
             return false;
         }
     }
+///////Untuk dashboard siswa
+    public List<LaporanKerusakan> getLaporanByNamaPelapor(String namaPelapor) {
+    List<LaporanKerusakan> daftarLaporan = new ArrayList<>();
+    String sql = "SELECT lk.*, b.nama_barang " +
+                 "FROM laporan_kerusakan lk " +
+                 "JOIN barang b ON lk.id_barang = b.id_barang " +
+                 "WHERE lk.nama_pelapor = ? ORDER BY lk.tanggal_pelaporan DESC";
 
-    
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        
+        pstmt.setString(1, namaPelapor);
+        try (ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                LaporanKerusakan laporan = new LaporanKerusakan(
+                    rs.getInt("id_laporan"),
+                    rs.getInt("id_barang"),
+                    rs.getString("nama_pelapor"),
+                    rs.getTimestamp("tanggal_pelaporan"),
+                    rs.getString("jenis_kerusakan"),
+                    rs.getString("lokasi_alat"),
+                    rs.getString("deskripsi_kerusakan"),
+                    rs.getString("url_foto_kerusakan"),
+                    rs.getString("status_laporan")
+                );
+                laporan.setNamaBarang(rs.getString("nama_barang"));
+                daftarLaporan.add(laporan);
+            }
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return daftarLaporan;
+}
 }

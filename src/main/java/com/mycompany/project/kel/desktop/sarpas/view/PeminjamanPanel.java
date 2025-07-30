@@ -66,6 +66,7 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         // --- Setup Data Awal & Listener ---
         setupDefaultValues();
         setupListeners();
+         loadComboBoxData(); 
         
     }
 
@@ -95,7 +96,7 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         txtWaktuMulai = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtWaktuSelesai = new javax.swing.JTextField();
-        btnSimpan = new javax.swing.JButton();
+        btnSimpan = new com.mycompany.project.kel.desktop.sarpas.view.RoundedButton();
         jLabel9 = new javax.swing.JLabel();
         txtNoTelepon = new javax.swing.JTextField();
         cbRuanganTersedia = new javax.swing.JCheckBox();
@@ -104,48 +105,77 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         txtJumlahBarang = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         comboStatus = new javax.swing.JComboBox<>();
-        txtNamaBarang = new javax.swing.JTextField();
-        txtNamaRuangan = new javax.swing.JTextField();
-        txtBarangTersedia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jdcTanggalPeminjaman = new com.toedter.calendar.JDateChooser();
         jdcTanggalKembali = new com.toedter.calendar.JDateChooser();
+        comboBarang = new javax.swing.JComboBox<>();
+        comboRuangan = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel1.setText("Nama Peminjam:");
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel2.setText("Jenis Fasilitas yang Dipinjam:");
 
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel4.setText("Tanggal Peminjaman:");
 
+        txtNamaPeminjam.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtNamaPeminjam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNamaPeminjamActionPerformed(evt);
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel8.setText("Identitas Siswa:");
 
+        cbSiswaKelas.setBackground(new java.awt.Color(255, 255, 255));
+        cbSiswaKelas.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         cbSiswaKelas.setText("Siswa kelas");
+        cbSiswaKelas.setContentAreaFilled(false);
         cbSiswaKelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSiswaKelasActionPerformed(evt);
             }
         });
 
-        cbStafSekolah.setText(" Staf Sekolah");
+        txtSiswaKelas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        cbStafSekolah.setBackground(new java.awt.Color(255, 255, 255));
+        cbStafSekolah.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        cbStafSekolah.setText(" Staf Sekolah");
+        cbStafSekolah.setContentAreaFilled(false);
+
+        cbPihakEksternal.setBackground(new java.awt.Color(255, 255, 255));
+        cbPihakEksternal.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         cbPihakEksternal.setText("Pihak External");
+        cbPihakEksternal.setContentAreaFilled(false);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         txtKeperluan.setColumns(20);
         txtKeperluan.setRows(5);
+        txtKeperluan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jScrollPane1.setViewportView(txtKeperluan);
 
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel7.setText("Keperluan:");
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel3.setText("Waktu mulai:");
 
+        txtWaktuMulai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel11.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel11.setText("Waktu Selesai:");
 
+        txtWaktuSelesai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        btnSimpan.setBackground(new java.awt.Color(0, 153, 204));
+        btnSimpan.setForeground(new java.awt.Color(255, 255, 255));
         btnSimpan.setText("Simpan");
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,7 +187,7 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -193,24 +223,42 @@ public class PeminjamanPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 215, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                 .addComponent(btnSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
 
+        jLabel9.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel9.setText("No. telepon/HP:");
 
+        txtNoTelepon.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        cbRuanganTersedia.setBackground(new java.awt.Color(255, 255, 255));
+        cbRuanganTersedia.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         cbRuanganTersedia.setText("Ruangan Tersedia");
+        cbRuanganTersedia.setContentAreaFilled(false);
 
+        cbBarangTersedia.setBackground(new java.awt.Color(255, 255, 255));
+        cbBarangTersedia.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         cbBarangTersedia.setText("Barang Tersedia");
+        cbBarangTersedia.setContentAreaFilled(false);
 
+        jLabel10.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel10.setText("Jumlah Barang:");
 
+        txtJumlahBarang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel5.setText("Status");
 
         comboStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jLabel6.setText("Tanggal Pengembalian:");
+
+        comboBarang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        comboRuangan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -226,7 +274,6 @@ public class PeminjamanPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbBarangTersedia)
                                     .addComponent(cbRuanganTersedia)))
-                            .addComponent(jLabel1)
                             .addComponent(jLabel6)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
@@ -235,19 +282,20 @@ public class PeminjamanPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtNamaBarang, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNamaRuangan, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtNoTelepon, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(comboStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtBarangTersedia)
+                                    .addComponent(comboStatus, javax.swing.GroupLayout.Alignment.LEADING, 0, 158, Short.MAX_VALUE)
                                     .addComponent(txtJumlahBarang, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtSiswaKelas, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNamaPeminjam))
-                                .addGap(20, 20, 20))
+                                    .addComponent(comboRuangan, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(comboBarang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(2, 2, 2))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(jdcTanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE))))
+                                .addGap(46, 46, 46)
+                                .addComponent(jdcTanggalKembali, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(40, 40, 40)
+                        .addComponent(txtNamaPeminjam))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -263,28 +311,25 @@ public class PeminjamanPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel10)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(53, 53, 53)))
-                        .addGap(18, 18, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jdcTanggalPeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(37, 37, 37)))
+                        .addComponent(jdcTanggalPeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(117, 117, 117))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel8)
-                        .addGap(8, 8, 8))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(txtNamaPeminjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNamaPeminjam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbSiswaKelas)
                     .addComponent(txtSiswaKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -292,39 +337,41 @@ public class PeminjamanPanel extends javax.swing.JPanel {
                 .addComponent(cbStafSekolah)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbPihakEksternal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(txtNoTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addComponent(jLabel2)
-                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(cbRuanganTersedia))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(comboRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbRuanganTersedia)
-                    .addComponent(txtNamaRuangan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(cbBarangTersedia)
-                    .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBarangTersedia, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(comboBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtJumlahBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jdcTanggalPeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(12, 12, 12)
                         .addComponent(jLabel6)
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)))
-                    .addComponent(jdcTanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jdcTanggalPeminjaman, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jdcTanggalKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(104, 104, 104))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -362,6 +409,25 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbSiswaKelasActionPerformed
 
+     private void loadComboBoxData() {
+        // Mengisi comboRuangan
+        if (comboRuangan != null) {
+            comboRuangan.removeAllItems();
+            List<Ruangan> daftarRuangan = ruanganDAO.getAllRuangan(); // Asumsi metode ini ada di RuanganDAO
+            for (Ruangan r : daftarRuangan) {
+                comboRuangan.addItem(r);
+            }
+        }
+        // Mengisi comboBarang
+        if (comboBarang != null) {
+            comboBarang.removeAllItems();
+            List<Barang> daftarBarang = barangDAO.getAllBarang();
+            for (Barang b : daftarBarang) {
+                comboBarang.addItem(b);
+            }
+        }
+    }
+    
     private void setupDefaultValues() {
         if(comboStatus != null) comboStatus.setModel(new DefaultComboBoxModel<>(new String[]{"Menunggu Persetujuan", "Disetujui", "Ditolak", "Selesai"}));
         if(comboStatus != null) comboStatus.setSelectedItem("Menunggu Persetujuan"); // Default
@@ -400,13 +466,14 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         if(cbPihakEksternal != null) cbPihakEksternal.addActionListener(identitasListener);
         
         // Listener untuk Jenis Fasilitas (JCheckBoxes)
-        ActionListener fasilitasListener = e -> {
+       ActionListener fasilitasListener = e -> {
             boolean isRuangan = (cbRuanganTersedia != null && cbRuanganTersedia.isSelected());
             boolean isBarang = (cbBarangTersedia != null && cbBarangTersedia.isSelected());
-            
-            if(txtNamaRuangan != null) txtNamaRuangan.setEnabled(isRuangan); 
-            if(txtBarangTersedia != null) txtBarangTersedia.setEnabled(isBarang); 
-            if(txtJumlahBarang != null) txtJumlahBarang.setEnabled(isBarang); 
+
+            // Ganti txtNamaRuangan menjadi comboRuangan
+            if (comboRuangan != null) comboRuangan.setEnabled(isRuangan);
+            if (comboBarang != null) comboBarang.setEnabled(isBarang);
+            if (txtJumlahBarang != null) txtJumlahBarang.setEnabled(isBarang);
         };
         if(cbRuanganTersedia != null) cbRuanganTersedia.addActionListener(fasilitasListener);
         if(cbBarangTersedia != null) cbBarangTersedia.addActionListener(fasilitasListener);
@@ -479,33 +546,23 @@ public class PeminjamanPanel extends javax.swing.JPanel {
             Integer jumlahDipinjam = null; 
 
             if (cbRuanganTersedia.isSelected()) {
-                if(txtNamaRuangan != null && txtNamaRuangan.getText().trim().isEmpty()) { 
-                    JOptionPane.showMessageDialog(this, "Nama ruangan yang dipinjam wajib diisi.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                Ruangan ruanganDipinjam = ruanganDAO.getRuanganByNama(txtNamaRuangan.getText().trim()); 
-                if(ruanganDipinjam != null) {
+                Ruangan ruanganDipinjam = (Ruangan) comboRuangan.getSelectedItem();
+                if (ruanganDipinjam != null) {
                     idRuanganFk = ruanganDipinjam.getIdRuangan();
                     namaFasilitasManual = ruanganDipinjam.getNamaRuangan();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Nama Ruangan tidak ditemukan.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Silakan pilih ruangan.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-
             } else if (cbBarangTersedia.isSelected()) {
-                if(txtBarangTersedia != null && txtBarangTersedia.getText().trim().isEmpty()) { 
-                    JOptionPane.showMessageDialog(this, "Nama barang yang dipinjam wajib diisi.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-                Barang barangDipinjam = barangDAO.getBarangByKode(txtBarangTersedia.getText().trim()); 
-                if (barangDipinjam != null) { 
-                    idBarangFk = barangDipinjam.getIdBarang(); 
-                    namaFasilitasManual = barangDipinjam.getNamaBarang(); 
+                Barang barangDipinjam = (Barang) comboBarang.getSelectedItem();
+                if (barangDipinjam != null) {
+                    idBarangFk = barangDipinjam.getIdBarang();
+                    namaFasilitasManual = barangDipinjam.getNamaBarang();
                 } else {
-                    JOptionPane.showMessageDialog(this, "Kode Barang tidak ditemukan.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "Silakan pilih barang.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-                
                 jumlahDipinjam = Integer.parseInt(txtJumlahBarang.getText().trim());
                 if (jumlahDipinjam <= 0) {
                      JOptionPane.showMessageDialog(this, "Jumlah barang harus lebih dari 0.", "Validasi Error", JOptionPane.WARNING_MESSAGE);
@@ -557,8 +614,8 @@ public class PeminjamanPanel extends javax.swing.JPanel {
         txtNoTelepon.setText("");
         
         if(jenisFasilitasGroup != null) jenisFasilitasGroup.clearSelection();
-        if(txtNamaRuangan != null) { txtNamaRuangan.setText(""); txtNamaRuangan.setEnabled(false); } 
-        if(txtBarangTersedia != null) { txtBarangTersedia.setText(""); txtBarangTersedia.setEnabled(false); } 
+//        if(txtNamaRuangan != null) { txtNamaRuangan.setText(""); txtNamaRuangan.setEnabled(false); } 
+       
         if(txtJumlahBarang != null) { txtJumlahBarang.setText(""); txtJumlahBarang.setEnabled(false); }
         
         // Reset tanggal dan waktu
@@ -580,6 +637,8 @@ public class PeminjamanPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox cbRuanganTersedia;
     private javax.swing.JCheckBox cbSiswaKelas;
     private javax.swing.JCheckBox cbStafSekolah;
+    private javax.swing.JComboBox<Barang> comboBarang;
+    private javax.swing.JComboBox<Ruangan> comboRuangan;
     private javax.swing.JComboBox<String> comboStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -596,12 +655,9 @@ public class PeminjamanPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private com.toedter.calendar.JDateChooser jdcTanggalKembali;
     private com.toedter.calendar.JDateChooser jdcTanggalPeminjaman;
-    private javax.swing.JTextField txtBarangTersedia;
     private javax.swing.JTextField txtJumlahBarang;
     private javax.swing.JTextArea txtKeperluan;
-    private javax.swing.JTextField txtNamaBarang;
     private javax.swing.JTextField txtNamaPeminjam;
-    private javax.swing.JTextField txtNamaRuangan;
     private javax.swing.JTextField txtNoTelepon;
     private javax.swing.JTextField txtSiswaKelas;
     private javax.swing.JTextField txtWaktuMulai;

@@ -37,7 +37,7 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
          initComponents(); // Ini memanggil kode yang dihasilkan GUI Builder
         
         System.out.println("DEBUG - InventarisSiswaPanel: Constructor dimulai."); 
-        
+         setupSearchComponents();
         this.barangDAO = new BarangDAO(); // Inisialisasi DAO
 
         // --- INI BARIS KRUSIAL UNTUK MENGHUBUNGKAN tableModel ---
@@ -61,22 +61,49 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        txtCariBarang = new javax.swing.JTextField();
+        btnCari = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInventaris = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        txtCariBarang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtCariBarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCariBarangActionPerformed(evt);
+            }
+        });
+
+        btnCari.setBackground(new java.awt.Color(204, 204, 204));
+        btnCari.setText("Cari");
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tblInventaris.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         tblInventaris.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Nama barang", "ID Kategori", "Kode Barang", "Jumlah Total", "Kondisi"
+                "Nama barang", "ID Kategori", "Kode Barang", "Jumlah Total", "Kondisi", "Jumlah Tersedia"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -85,23 +112,55 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblInventaris);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCari))
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(265, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtCariBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCariBarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCariBarangActionPerformed
 
   
   
@@ -116,15 +175,14 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
             System.out.println("DEBUG - loadBarangData: Jumlah barang dari DB: " + daftarBarang.size());
             if (!daftarBarang.isEmpty()) {
                 for (Barang barang : daftarBarang) {
-                    tableModel.addRow(new Object[]{
-                        // Tambahkan data sesuai dengan 5 KOLOM HEADER di atas
-                        // Urutan harus sesuai dengan header: Nama barang, ID Kategori, Kode Barang, Jumlah Total, Kondisi
-                        barang.getNamaBarang(),     // 1. Nama barang
-                        barang.getIdKategori(),     // 2. ID Kategori
-                        barang.getKodeBarang(),     // 3. Kode Barang
-                        barang.getJumlahTotal(),    // 4. Jumlah Total
-                        barang.getKondisi()         // 5. Kondisi
-                    });
+                   tableModel.addRow(new Object[]{
+    barang.getNamaBarang(),
+    barang.getIdKategori(),
+    barang.getKodeBarang(),
+    barang.getJumlahTotal(),
+    barang.getKondisi(),
+    barang.getJumlahTersedia() 
+});
                 }
                 System.out.println("DEBUG - loadBarangData: " + tableModel.getRowCount() + " baris ditambahkan ke tabel.");
             } else {
@@ -134,10 +192,68 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
             System.out.println("DEBUG - loadBarangData: barangDAO.getAllBarang() mengembalikan NULL.");
         }
     }
-                    
+          
+   
+     private void setupSearchComponents() {
+        // Anda harus menambahkan komponen txtCariBarang dan btnCari secara visual
+        // di NetBeans GUI builder. Kemudian, pastikan nama variabelnya sesuai.
+        // Kode ini hanya untuk memastikan action listener terpasang.
+
+        // Jika Anda ingin pencarian instan saat mengetik:
+        txtCariBarang.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                performSearch();
+            }
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                performSearch();
+            }
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                performSearch();
+            }
+        });
+    }
+
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {
+        performSearch();
+    }
+
+    private void performSearch() {
+        String keyword = txtCariBarang.getText().trim();
+        loadBarangData(keyword);
+    }
+
+    private void loadBarangData(String keyword) {
+        DefaultTableModel model = (DefaultTableModel) tblInventaris.getModel(); // Asumsi jTableBarang adalah nama tabel Anda
+        model.setRowCount(0); // Kosongkan tabel
+
+        List<Barang> daftarBarang;
+        if (keyword.isEmpty()) {
+            daftarBarang = barangDAO.getAllBarang();
+        } else {
+            daftarBarang = barangDAO.searchBarang(keyword); // Panggil metode pencarian baru
+        }
+
+        for (Barang barang : daftarBarang) {
+            model.addRow(new Object[]{
+                 barang.getNamaBarang(),     // 1. Nama barang
+                        barang.getIdKategori(),     // 2. ID Kategori
+                        barang.getKodeBarang(),     // 3. Kode Barang
+                        barang.getJumlahTotal(),    // 4. Jumlah Total
+                        barang.getKondisi(),
+                        barang.getJumlahTersedia()
+                
+                // Tambahkan kolom lain sesuai model tabel Anda
+            });
+        }
+    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCari;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblInventaris;
+    private javax.swing.JTextField txtCariBarang;
     // End of variables declaration//GEN-END:variables
 }

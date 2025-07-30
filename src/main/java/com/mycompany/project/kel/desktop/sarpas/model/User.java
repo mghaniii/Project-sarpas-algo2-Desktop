@@ -44,7 +44,8 @@ public class User {
         this.idUsers = idUsers;
         this.createTime = createTime;
     }
-
+public User() {
+}
     
     // Saya hanya berikan beberapa contoh.
 
@@ -85,13 +86,7 @@ public class User {
     public void setCreateTime(java.sql.Timestamp createTime) { this.createTime = createTime; }
 
     @Override
-    public String toString() {
-        return "User{" +
-               "idUsers=" + idUsers +
-               ", username='" + username + '\'' +
-               ", namaLengkap='" + namaLengkap + '\'' +
-               ", role='" + role + '\'' +
-               ", createTime=" + createTime +
-               '}';
-    }
+public String toString() {
+    return this.namaLengkap;
+}
 }

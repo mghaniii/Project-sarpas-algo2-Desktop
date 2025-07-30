@@ -4,6 +4,17 @@
  */
 package com.mycompany.project.kel.desktop.sarpas.view;
 
+import javax.swing.table.DefaultTableModel;
+
+
+import com.mycompany.project.kel.desktop.sarpas.dao.BarangDAO;
+import com.mycompany.project.kel.desktop.sarpas.dao.PemeliharaanDAO;
+import com.mycompany.project.kel.desktop.sarpas.dao.PeminjamanDAO; // Import PeminjamanDAO
+import com.mycompany.project.kel.desktop.sarpas.model.Pemeliharaan;
+import com.mycompany.project.kel.desktop.sarpas.model.Peminjaman;
+import com.mycompany.project.kel.desktop.sarpas.util.GlobalAppState;
+import java.util.List;
+
 /**
  *
  * @author AXIOO
@@ -13,8 +24,47 @@ public class DashboardPanel extends javax.swing.JPanel {
     /**
      * Creates new form DashboardPanel
      */
+    private void loadJadwalPerawatan() {
+    DefaultTableModel model = (DefaultTableModel) tblPerawatan.getModel();
+    model.setRowCount(0);
+
+    PemeliharaanDAO dao = new PemeliharaanDAO();
+    List<Pemeliharaan> daftarJadwal = dao.getJadwalMendatang();
+
+    for (Pemeliharaan p : daftarJadwal) {
+        model.addRow(new Object[]{
+            p.getTanggalJadwal(),
+            p.getNamaBarang(),
+            p.getNamaPetugas(),
+            p.getStatus()
+        });
+    }
+}
+        private void loadDashboardData() {
+        BarangDAO barangDAO = new BarangDAO();
+
+        // Panggil metode dari DAO untuk mendapatkan angka
+        
+        int totalAset = barangDAO.hitungTotalAset();
+        int asetBaik = barangDAO.hitungAsetByKondisi("Baik");
+//        int asetRusak = barangDAO.hitungAsetByKondisi("Rusak");
+        int asetRusak = barangDAO.hitungSemuaAsetRusak();
+        // Asumsi "Dalam Perawatan" adalah salah satu status di kolom 'kondisi'
+       PemeliharaanDAO pemeliharaanDAO = new PemeliharaanDAO();
+int dalamPerawatan = pemeliharaanDAO.hitungPerawatanAktif();
+
+        // Atur teks di label-label yang sudah Anda buat di mode Design
+        // Pastikan nama variabelnya sesuai (lblTotalAset, lblAsetBaik, dll.)
+        lblTotalAset.setText(totalAset + " Barang");
+        lblAsetBaik.setText(asetBaik + " Barang");
+        lblAsetRusak.setText(asetRusak + " Barang");
+        lblDalamPerawatan.setText(dalamPerawatan + " Barang");
+    }
     public DashboardPanel() {
         initComponents();
+         loadDashboardData(); 
+        loadJadwalPerawatan();
+         loadPeminjamanData();
     }
 
     /**
@@ -26,19 +76,282 @@ public class DashboardPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-    }// </editor-fold>//GEN-END:initComponents
+        panelKartu = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        lblTotalAset = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblAsetBaik = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblAsetRusak = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        lblDalamPerawatan = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPerawatan = new javax.swing.JTable();
+        panelPeminjamanBawah = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblPeminjamanTerjadwal = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPeminjamanHariIni = new javax.swing.JTable();
 
+        setLayout(new java.awt.BorderLayout());
+
+        panelKartu.setBackground(new java.awt.Color(255, 255, 255));
+        panelKartu.setPreferredSize(new java.awt.Dimension(600, 100));
+        panelKartu.setLayout(new java.awt.GridLayout(1, 4, 10, 10));
+
+        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblTotalAset.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblTotalAset.setText("jLabel1");
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel1.setText("Total Aset");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblTotalAset)))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblTotalAset)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        panelKartu.add(jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(102, 204, 0));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblAsetBaik.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblAsetBaik.setText("jLabel1");
+
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel2.setText("Aset Baik");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(lblAsetBaik))
+                .addGap(48, 48, 48))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblAsetBaik)
+                .addGap(23, 23, 23))
+        );
+
+        panelKartu.add(jPanel2);
+
+        jPanel3.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblAsetRusak.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblAsetRusak.setText("jLabel1");
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel3.setText("Aset Rusak");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblAsetRusak))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel3)))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblAsetRusak)
+                .addGap(29, 29, 29))
+        );
+
+        panelKartu.add(jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 153));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        lblDalamPerawatan.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        lblDalamPerawatan.setText("jLabel1");
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel4.setText("<html>Dalam<br> Perawatan</html>");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(lblDalamPerawatan)))
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDalamPerawatan)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        panelKartu.add(jPanel4);
+
+        add(panelKartu, java.awt.BorderLayout.PAGE_START);
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tblPerawatan.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        tblPerawatan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Tanggal", "Barang", "Petugas", "Status"
+            }
+        ));
+        jScrollPane1.setViewportView(tblPerawatan);
+
+        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        panelPeminjamanBawah.setPreferredSize(new java.awt.Dimension(600, 100));
+        panelPeminjamanBawah.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tblPeminjamanTerjadwal.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        tblPeminjamanTerjadwal.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Fasilitas", "Dipinjam Oleh", "Waktu", "Tanggal"
+            }
+        ));
+        jScrollPane2.setViewportView(tblPeminjamanTerjadwal);
+
+        panelPeminjamanBawah.add(jScrollPane2);
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tblPeminjamanHariIni.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        tblPeminjamanHariIni.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Fasilitas", "Waktu", "Status"
+            }
+        ));
+        jScrollPane3.setViewportView(tblPeminjamanHariIni);
+
+        panelPeminjamanBawah.add(jScrollPane3);
+
+        add(panelPeminjamanBawah, java.awt.BorderLayout.PAGE_END);
+    }// </editor-fold>//GEN-END:initComponents
+private void loadPeminjamanData() {
+        PeminjamanDAO dao = new PeminjamanDAO();
+
+        // 1. Isi tabel Peminjaman Terjadwal
+        DefaultTableModel modelTerjadwal = (DefaultTableModel) tblPeminjamanTerjadwal.getModel();
+        modelTerjadwal.setRowCount(0);
+        List<Peminjaman> daftarTerjadwal = dao.getPeminjamanTerjadwal();
+        for (Peminjaman p : daftarTerjadwal) {
+            modelTerjadwal.addRow(new Object[]{
+                p.getNamaFasilitasManual(),
+                p.getNamaPeminjam(),
+                p.getWaktuMulai() + " - " + p.getWaktuSelesai(),
+                p.getTanggalPeminjaman()
+            });
+        }
+
+        // 2. Isi tabel Peminjaman Hari Ini
+        DefaultTableModel modelHariIni = (DefaultTableModel) tblPeminjamanHariIni.getModel();
+        modelHariIni.setRowCount(0);
+        List<Peminjaman> daftarHariIni = dao.getPeminjamanHariIni();
+        for (Peminjaman p : daftarHariIni) {
+            modelHariIni.addRow(new Object[]{
+                p.getNamaFasilitasManual(),
+                p.getWaktuMulai() + " - " + p.getWaktuSelesai(),
+                p.getStatusPeminjaman()
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblAsetBaik;
+    private javax.swing.JLabel lblAsetRusak;
+    private javax.swing.JLabel lblDalamPerawatan;
+    private javax.swing.JLabel lblTotalAset;
+    private javax.swing.JPanel panelKartu;
+    private javax.swing.JPanel panelPeminjamanBawah;
+    private javax.swing.JTable tblPeminjamanHariIni;
+    private javax.swing.JTable tblPeminjamanTerjadwal;
+    private javax.swing.JTable tblPerawatan;
     // End of variables declaration//GEN-END:variables
 }
