@@ -338,13 +338,13 @@ public void setLoginSuccessListener(Runnable listener) {
 
      private void setPlaceholder() {
     // Placeholder untuk Username
-    txtUserId.setText("Masukkan Username / NIP / ID");
+    txtUserId.setText("Masukkan Username ");
     txtUserId.setForeground(Color.GRAY);
 
     txtUserId.addFocusListener(new FocusAdapter() {
         @Override
         public void focusGained(FocusEvent e) {
-            if (txtUserId.getText().equals("Masukkan Username / NIP / ID")) {
+            if (txtUserId.getText().equals("Masukkan Username ")) {
                 txtUserId.setText("");
                 txtUserId.setForeground(Color.BLACK);
             }
@@ -354,7 +354,7 @@ public void setLoginSuccessListener(Runnable listener) {
         public void focusLost(FocusEvent e) {
             if (txtUserId.getText().isEmpty()) {
                 txtUserId.setForeground(Color.GRAY);
-                txtUserId.setText("Masukkan Username / NIP / ID");
+                txtUserId.setText("Masukkan Username ");
             }
         }
     });
