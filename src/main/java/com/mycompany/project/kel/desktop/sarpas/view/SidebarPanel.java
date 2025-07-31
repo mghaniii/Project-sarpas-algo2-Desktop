@@ -13,14 +13,22 @@ import javax.swing.BoxLayout; // Import BoxLayout
 import javax.swing.BorderFactory; // Import BorderFactory
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.List;
 /**
  *
  * @author AXIOO
  */
 public class SidebarPanel extends javax.swing.JPanel {
+
+    
+             // --- KODE BARU: Simpan semua tombol navigasi dalam sebuah daftar ---
+    private List<JButton> navigationButtons;
+    private final Color activeColor = new Color(21, 128, 250); // Warna biru untuk tombol aktif
+    private final Color defaultColor = Color.BLACK; // Warna teks default
 
     /**
      * Creates new form SidebarPanel
@@ -28,14 +36,14 @@ public class SidebarPanel extends javax.swing.JPanel {
     public SidebarPanel() {
 //        setLogoIcon();
         initComponents(); // Ini memanggil kode yang dihasilkan GUI Builder
+        initializeNavigationButtons();
          // Sembunyikan panel dropdown di awal
         panelDropdownPerawatan.setVisible(false);
-                setupDropdownListener();
-        
+        setupDropdownListener();
+        ///////Dibawah kode test doang
       System.out.println("--- MEMULAI TES IKON DENGAN ALAMAT LENGKAP ---");
     try {
-        // Ini adalah alamat lengkap file di komputer Anda.
-        // Pastikan path ini benar dan file 'profile_icon.png' ada di sana.
+      
         String absolutePath = "C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\resources\\assets\\profile_icon.png";
 
         java.io.File imageFile = new java.io.File(absolutePath);
@@ -63,19 +71,19 @@ public class SidebarPanel extends javax.swing.JPanel {
     // --- AKHIR DARI TES ---
     // --- AKHIR DARI TES ---
 
-    // setButtonIcons(); // <-- Pastikan baris ini dinonaktifkan untuk sementara
+    // setButtonIcons(); 
 
         
         
         
         setButtonIcons();
-        // --- Pengaturan Tampilan Dasar Panel Sidebar ---
+   
        setBackground(Color.WHITE);
 //        setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
 setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
     if (btnProfile != null) btnProfile.addActionListener(e -> fireButtonAction(e.getActionCommand())); // Tambahkan ini
-        // Tambahkan ActionListener ke setiap tombol yang Anda buat di Design Mode
-        // PASTIKAN NAMA VARIABEL TOMBOL DI SINI SAMA DENGAN YANG ANDA ATUR DI DESIGN MODE!
+   
+       
         if (btnDashboard != null) btnDashboard.addActionListener(e -> fireButtonAction(e.getActionCommand()));
         if (btnInventaris != null) btnInventaris.addActionListener(e -> fireButtonAction(e.getActionCommand()));
         if (btnPeminjaman != null) btnPeminjaman.addActionListener(e -> fireButtonAction(e.getActionCommand()));
@@ -111,6 +119,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnDashboard.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\Dashboard_icon.png")); // NOI18N
         btnDashboard.setText("Dashboard");
         btnDashboard.setBorder(null);
+        btnDashboard.setBorderPainted(false);
         btnDashboard.setContentAreaFilled(false);
         btnDashboard.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDashboard.setPreferredSize(new java.awt.Dimension(87, 22));
@@ -119,6 +128,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnInventaris.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\Barang_icon.png")); // NOI18N
         btnInventaris.setText("Inventaris Barang");
         btnInventaris.setBorder(null);
+        btnInventaris.setBorderPainted(false);
         btnInventaris.setContentAreaFilled(false);
         btnInventaris.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInventaris.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +141,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnPeminjaman.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\iconpeminjaman.png")); // NOI18N
         btnPeminjaman.setText("Peminjaman Fasilitas");
         btnPeminjaman.setBorder(null);
+        btnPeminjaman.setBorderPainted(false);
         btnPeminjaman.setContentAreaFilled(false);
         btnPeminjaman.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
@@ -138,6 +149,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnLaporan.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\laporan_icon.png")); // NOI18N
         btnLaporan.setText("Laporan Kerusakan");
         btnLaporan.setBorder(null);
+        btnLaporan.setBorderPainted(false);
         btnLaporan.setContentAreaFilled(false);
         btnLaporan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
@@ -145,6 +157,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnProfile.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\akunicon.png")); // NOI18N
         btnProfile.setText("Profile");
         btnProfile.setBorder(null);
+        btnProfile.setBorderPainted(false);
         btnProfile.setContentAreaFilled(false);
         btnProfile.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
@@ -159,6 +172,7 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnPerawatanUtama.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\iconpemeliharaan.png")); // NOI18N
         btnPerawatanUtama.setText("Jadwal Perawatan   V");
         btnPerawatanUtama.setBorder(null);
+        btnPerawatanUtama.setBorderPainted(false);
         btnPerawatanUtama.setContentAreaFilled(false);
         btnPerawatanUtama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,13 +189,14 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
             }
         });
 
-        panelDropdownPerawatan.setBackground(new java.awt.Color(239, 239, 239));
+        panelDropdownPerawatan.setBackground(new java.awt.Color(255, 255, 255));
         panelDropdownPerawatan.setLayout(new javax.swing.BoxLayout(panelDropdownPerawatan, javax.swing.BoxLayout.Y_AXIS));
 
         btnSubJadwal.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnSubJadwal.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\jadwalicon.png")); // NOI18N
         btnSubJadwal.setText("Jadwal Perawatan");
-        btnSubJadwal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnSubJadwal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        btnSubJadwal.setBorderPainted(false);
         btnSubJadwal.setContentAreaFilled(false);
         btnSubJadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,7 +208,8 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         btnSubRiwayat.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         btnSubRiwayat.setIcon(new javax.swing.ImageIcon("C:\\Users\\AXIOO\\Documents\\NetBeansProjects\\Project-kel-6-desktop-sarpas\\src\\main\\java\\img\\img\\riwayaticon.png")); // NOI18N
         btnSubRiwayat.setText("Riwayat Perawatan");
-        btnSubRiwayat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnSubRiwayat.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 5, 1, 1));
+        btnSubRiwayat.setBorderPainted(false);
         btnSubRiwayat.setContentAreaFilled(false);
         btnSubRiwayat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,7 +371,32 @@ setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
         });
     }
    
-
+  private void initializeNavigationButtons() {
+        navigationButtons = new ArrayList<>();
+        // Tambahkan semua tombol menu Anda ke dalam daftar ini
+        navigationButtons.add(btnProfile);
+        navigationButtons.add(btnDashboard);
+        navigationButtons.add(btnInventaris);
+        navigationButtons.add(btnPeminjaman);
+        navigationButtons.add(btnLaporan);
+        navigationButtons.add(btnSubRiwayat);
+        navigationButtons.add(btnSubJadwal);
+        // Tambahkan tombol dropdown jika ada (misal: btnPerawatanUtama)
+        // navigationButtons.add(btnPerawatanUtama); 
+    }
+  
+    public void setActiveButton(String activeCommand) {
+        for (JButton button : navigationButtons) {
+            if (button.getActionCommand().equalsIgnoreCase(activeCommand)) {
+                // Jika tombol ini yang aktif, ubah warnanya menjadi biru
+                button.setForeground(activeColor);
+            } else {
+                // Jika tidak, kembalikan ke warna default
+                button.setForeground(defaultColor);
+            }
+        }
+    }
+  
   
 
 //   private void setLogoIcon() {

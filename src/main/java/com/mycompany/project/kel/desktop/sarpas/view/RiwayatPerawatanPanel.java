@@ -110,13 +110,13 @@ public class RiwayatPerawatanPanel extends javax.swing.JPanel {
     }
     
         private void loadRiwayatData() {
-        // Ambil nilai dari komponen filter di UI
+        
         String keyword = txtCariRiwayat.getText();
         String status = comboFilterStatus.getSelectedItem().toString();
         
-        tableModel.setRowCount(0); // Kosongkan tabel sebelum diisi
+        tableModel.setRowCount(0); 
         
-        // Panggil metode DAO dengan parameter filter
+       
         List<Pemeliharaan> daftarJadwal = pemeliharaanDAO.getFilteredPemeliharaan(keyword, status);
         
         // Isi tabel dengan 8 kolom data
@@ -135,7 +135,7 @@ public class RiwayatPerawatanPanel extends javax.swing.JPanel {
     }
       
        private void setupListeners() {
-        // Setiap kali tombol filter diklik, panggil metode loadRiwayatData()
+      
         btnFilter.addActionListener(e -> loadRiwayatData());
     }
 

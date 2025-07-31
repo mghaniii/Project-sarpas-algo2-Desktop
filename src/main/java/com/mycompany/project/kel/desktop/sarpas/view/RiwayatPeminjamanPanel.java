@@ -245,7 +245,7 @@ private void setupListeners() {
                 // Ambil STATUS dari kolom terakhir (indeks 4)
                 String status = tableModel.getValueAt(selectedRow, 5).toString();
 
-                // --- INI KODE DEBUG BARU ---
+               
                 // Kita akan mencetak status persis seperti yang dibaca dari tabel
                 System.out.println("DEBUG: Status dari tabel adalah -> '" + status + "'");
                 // ---------------------------

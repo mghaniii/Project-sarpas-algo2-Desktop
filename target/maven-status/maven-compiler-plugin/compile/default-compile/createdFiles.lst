@@ -1,9 +1,11 @@
 com\mycompany\project\kel\desktop\sarpas\view\AdminProfilePanel1.class
+com\mycompany\project\kel\desktop\sarpas\view\SiswaProfilePanel$1.class
 com\mycompany\project\kel\desktop\sarpas\dao\UserDAO.class
 com\mycompany\project\kel\desktop\sarpas\view\InventarisAdminPanel$1.class
 com\mycompany\project\kel\desktop\sarpas\view\JadwalPerawatanPanel.class
 com\mycompany\project\kel\desktop\sarpas\view\SidebarPanel$5.class
 com\mycompany\project\kel\desktop\sarpas\view\LaporanKerusakan1$2.class
+com\mycompany\project\kel\desktop\sarpas\view\AdminProfilePanel1$1.class
 com\mycompany\project\kel\desktop\sarpas\ProjectKel6DesktopSarpas$1.class
 com\mycompany\project\kel\desktop\sarpas\model\Kategori.class
 com\mycompany\project\kel\desktop\sarpas\util\DatabaseConnection.class
@@ -59,7 +61,6 @@ com\mycompany\project\kel\desktop\sarpas\view\LoginPanel11$3.class
 com\mycompany\project\kel\desktop\sarpas\view\AdminProfilePanel.class
 com\mycompany\project\kel\desktop\sarpas\view\JadwalPerawatanPanel$1.class
 com\mycompany\project\kel\desktop\sarpas\dao\PemeliharaanDAO.class
-com\mycompany\project\kel\desktop\sarpas\view\PemeliharaanPanel.class
 com\mycompany\project\kel\desktop\sarpas\view\LoginPanel1.class
 com\mycompany\project\kel\desktop\sarpas\model\Lokasi.class
 com\mycompany\project\kel\desktop\sarpas\view\PeminjamanPanel.class

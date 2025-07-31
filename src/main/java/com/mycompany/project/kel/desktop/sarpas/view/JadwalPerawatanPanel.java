@@ -291,7 +291,7 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
     }
 
          private void loadComboBoxData() {
-        // Mengisi ComboBox untuk form tambah jadwal
+     
         BarangDAO barangDAO = new BarangDAO();
         List<Barang> daftarBarang = barangDAO.getAllBarang();
         for (Barang b : daftarBarang) {
@@ -299,9 +299,9 @@ public class JadwalPerawatanPanel extends javax.swing.JPanel {
         }
         
         UserDAO userDAO = new UserDAO();
-        List<User> daftarUser = userDAO.getAllUsers(); // Asumsi ada metode ini di UserDAO
+        List<User> daftarUser = userDAO.getAllUsers(); 
         for (User u : daftarUser) {
-            // Hanya tambahkan admin atau teknisi sebagai pilihan petugas
+         
             if("admin".equalsIgnoreCase(u.getRole()) || "teknisi".equalsIgnoreCase(u.getRole())) {
                 comboPetugas.addItem(u);
             }

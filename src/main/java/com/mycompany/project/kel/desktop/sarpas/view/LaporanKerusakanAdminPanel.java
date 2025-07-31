@@ -190,7 +190,7 @@ public class LaporanKerusakanAdminPanel extends javax.swing.JPanel {
 
         for (LaporanKerusakan laporan : daftarLaporan) {
             // Tambahkan baris baru ke tabel
-            // Urutan harus sesuai dengan kolom di JTable Anda
+            // Urutan harus sesuai dengan kolom di JTable 
             tableModel.addRow(new Object[]{
     laporan.getIdLaporan(),
     laporan.getNamaBarang(),

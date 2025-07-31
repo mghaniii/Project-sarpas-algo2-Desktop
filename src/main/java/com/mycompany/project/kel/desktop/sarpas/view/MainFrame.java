@@ -61,7 +61,7 @@ public class MainFrame extends JFrame {
               System.out.println("DEBUG TOMBOL: Teks asli dari tombol adalah -> '" + command + "'");
 
             System.out.println("MainFrame menerima klik dari Sidebar: " + command); // Baris ini sudah ada
-
+             sidebarPanel.setActiveButton(command);
             switch (command.toLowerCase()) {
                 case "logout":
                     headerPanel.clearHeader();
@@ -84,9 +84,9 @@ public class MainFrame extends JFrame {
     showPanel(new JadwalPerawatanPanel()); // Panel untuk mengelola jadwal
     break;
 
-case "riwayat perawatan": // Ini adalah teks dari btnSubRiwayat
-    // Buat panel baru bernama RiwayatPerawatanPanel.java
-    // Untuk sementara, kita bisa gunakan dummy panel
+            case "riwayat perawatan": // Ini adalah teks dari btnSubRiwayat
+   
+   
     showPanel(new RiwayatPerawatanPanel()); 
     break;
                 case "profile":

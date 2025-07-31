@@ -183,7 +183,7 @@ List<LaporanKerusakan> daftarLaporan = laporanDAO.getLaporanByNamaPelapor(curren
          
              private void setupActionListeners() {
         btnAjukanPeminjaman.addActionListener(e -> {
-            // Dapatkan frame utama dan panggil metode untuk menampilkan panel peminjaman
+          
             MainFrame mainFrame = (MainFrame) SwingUtilities.getWindowAncestor(this);
             if (mainFrame != null) {
                 mainFrame.showPanel(new PeminjamanPanel());
@@ -191,7 +191,7 @@ List<LaporanKerusakan> daftarLaporan = laporanDAO.getLaporanByNamaPelapor(curren
         });
         
         btnBuatLaporan.addActionListener(e -> {
-            // Dapatkan frame utama dan panggil metode untuk menampilkan panel laporan
+            
             MainFrame mainFrame = (MainFrame) SwingUtilities.getWindowAncestor(this);
             if (mainFrame != null) {
                 mainFrame.showPanel(new LaporanKerusakan1());

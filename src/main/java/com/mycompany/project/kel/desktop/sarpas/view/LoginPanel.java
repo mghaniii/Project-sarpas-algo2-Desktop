@@ -127,15 +127,9 @@ public class LoginPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(467, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 200, 200))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(144, 144, 144))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(lbllogo)
                         .addGap(269, 269, 269))
@@ -152,6 +146,15 @@ public class LoginPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(lblContactAdmin)
                         .addGap(293, 293, 293))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(467, 467, 467)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(144, 144, 144))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,7 +253,7 @@ public void setLoginSuccessListener(Runnable listener) {
 } 
     }//GEN-LAST:event_cbShowPasswordActionPerformed
  private void setupContactAdminLink() {
-        // Pastikan Anda punya JLabel bernama lblContactAdmin di mode Design
+        // Pastikan  punya JLabel bernama lblContactAdmin di mode Design
         if (lblContactAdmin != null) {
             lblContactAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
                 @Override
@@ -299,7 +302,7 @@ public void setLoginSuccessListener(Runnable listener) {
     }
  
  private void setLogoIcon() {
-        // --- INI ADALAH PERBAIKANNYA ---
+    
 
         // 1. Pecah string Base64 Anda yang sangat panjang menjadi beberapa bagian.
         //    Anda bisa memecahnya di mana saja.
@@ -384,8 +387,8 @@ public void setLoginSuccessListener(Runnable listener) {
         }
     });
 
-    // Supaya saat pertama kali panel dibuka, tidak langsung fokus ke Jusername
-    SwingUtilities.invokeLater(() -> txtUserId.requestFocusInWindow());
+    this.setFocusable(true);
+    SwingUtilities.invokeLater(() -> this.requestFocusInWindow());
 }
      
      

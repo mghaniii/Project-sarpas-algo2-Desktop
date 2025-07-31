@@ -7,7 +7,7 @@ package com.mycompany.project.kel.desktop.sarpas.view;
 import com.mycompany.project.kel.desktop.sarpas.util.GlobalAppState;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.FlowLayout; // Untuk mengatur layout ke kanan
+import java.awt.FlowLayout; 
 /**
  *
  * @author AXIOO
@@ -81,7 +81,7 @@ public void setWelcomeMessageByRole() {
 
     String message = ""; // Variabel untuk menyimpan pesan
 
-    // Gunakan switch untuk menentukan pesan berdasarkan role
+  
     switch (role.toLowerCase()) {
         case "admin":
             message = "Dashboard Anda siap. Segera cek status aset, peminjaman, dan laporan terbaru.";
@@ -101,7 +101,7 @@ public void setWelcomeMessageByRole() {
     }
 
     // Atur teks di JLabel dengan pesan yang sudah dipilih
-    // Gunakan tag <html> agar teks bisa turun baris jika terlalu panjang
+    
     lblWelcomeMessage.setText("<html><div style='width:300px;'>" + message + "</div></html>");
 }
 

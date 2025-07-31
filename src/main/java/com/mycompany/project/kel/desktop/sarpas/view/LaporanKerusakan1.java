@@ -44,7 +44,7 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
         
         this.laporanDAO = new LaporanKerusakanDAO();
 
-        // --- BARIS TERKAIT TABLEMODEL DIHAPUS DARI SINI ---
+       
         // tableModel = (DefaultTableModel) tblLaporan.getModel(); 
         // System.out.println("DEBUG - LaporanKerusakanPanel: tableModel berhasil dihubungkan. Jumlah kolom: " + tableModel.getColumnCount());
 
@@ -72,8 +72,8 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     selectedFile = fileChooser.getSelectedFile();
 
-                    // --- LOGIKA PEMBATASAN UKURAN FILE BARU DI SINI ---
-                    long fileSizeInBytes = selectedFile.length(); // Mendapatkan ukuran file dalam bytes
+                   
+                    long fileSizeInBytes = selectedFile.length(); 
                     long maxFileSizeInBytes = 2 * 1024 * 1024; // 2 MB = 2 * 1024 KB * 1024 Bytes
 
                     if (fileSizeInBytes > maxFileSizeInBytes) {
@@ -88,10 +88,10 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
                         System.err.println("DEBUG: Ukuran file " + fileSizeInBytes + " bytes, melebihi batas 2MB.");
                         return; // Hentikan proses jika file terlalu besar
                     }
-                    // --- AKHIR LOGIKA PEMBATASAN UKURAN FILE ---
+                   
 
                     if (txtFotoPath != null) {
-                        txtFotoPath.setText(selectedFile.getAbsolutePath()); // Tampilkan path jika ukuran OK
+                        txtFotoPath.setText(selectedFile.getAbsolutePath()); 
                     }
                     System.out.println("DEBUG: File foto dipilih: " + selectedFile.getAbsolutePath() + ", Ukuran: " + fileSizeInBytes + " bytes.");
                 }
@@ -301,11 +301,11 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
         }
 
         // Ambil data dari form UI
-        String kodeBarang = txtKodeBarangRusak.getText().trim(); // <<< UBAH INI (Ambil kode barang)
+        String kodeBarang = txtKodeBarangRusak.getText().trim(); 
 
-        // --- PENTING: Panggil BarangDAO untuk mendapatkan ID Barang dari Kode Barang ---
+       
         BarangDAO barangDAO = new BarangDAO(); // Inisialisasi BarangDAO
-        Barang barangRusak = barangDAO.getBarangByKode(kodeBarang); // <<< Panggil metode baru ini
+        Barang barangRusak = barangDAO.getBarangByKode(kodeBarang); 
 
         if (barangRusak == null) {
             JOptionPane.showMessageDialog(this, "Kode Barang tidak ditemukan. Mohon masukkan kode yang benar.", "Input Error", JOptionPane.ERROR_MESSAGE);
@@ -320,20 +320,20 @@ public class LaporanKerusakan1 extends javax.swing.JPanel {
         String deskripsi = taDeskripsiKerusakan.getText().trim();
 
         String urlFoto = null;
-        // ... (Logika upload foto, sama seperti sebelumnya) ...
+       
  
             if (selectedFile != null) {
-                // Jika ada file yang dipilih, ambil alamat path-nya
+               
                 urlFoto = selectedFile.getAbsolutePath();
             }
-            // --- AKHIR PERBAIKAN ---
+           
 
         // Buat objek LaporanKerusakan
         LaporanKerusakan newLaporan = new LaporanKerusakan(
             idBarang, namaPelapor, jenisKerusakan, lokasiAlat, deskripsi, urlFoto
         );
 
-        // ... (Panggil DAO, pesan sukses/gagal, refresh, clearForm) ...
+     
         if (laporanDAO.addLaporanKerusakan(newLaporan)) {
             JOptionPane.showMessageDialog(this, "Laporan berhasil dikirim!");
             // loadLaporanData(); // Jika tabel ada di panel ini, panggil ini

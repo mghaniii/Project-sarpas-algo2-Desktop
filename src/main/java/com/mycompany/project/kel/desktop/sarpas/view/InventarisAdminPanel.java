@@ -50,9 +50,9 @@ public class InventarisAdminPanel extends javax.swing.JPanel {
         System.out.println("DEBUG - InventarisAdminPanel: tableModel berhasil dihubungkan. Jumlah kolom: " + tableModel.getColumnCount());
 
         loadComboBoxData(); // Muat data untuk JComboBoxes Kategori dan Lokasi
-        loadBarangData();   // Muat data barang ke tabel
-        setupListeners();   // Setup listener untuk tombol-tombol
-        setupFormState(false); //
+        loadBarangData();   // dll
+        setupListeners();   
+        setupFormState(false); 
         setupRoleBasedUI();
     }
 
@@ -166,7 +166,7 @@ public class InventarisAdminPanel extends javax.swing.JPanel {
         btnAdd.setBackground(new java.awt.Color(0, 153, 204));
         btnAdd.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         btnAdd.setForeground(new java.awt.Color(255, 255, 255));
-        btnAdd.setText("Klik tambah");
+        btnAdd.setText("Tambah Barang");
 
         btnUpdate.setBackground(new java.awt.Color(0, 153, 255));
         btnUpdate.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
@@ -277,19 +277,20 @@ public class InventarisAdminPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtSearchQuery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSearchBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSearchBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearchQuery, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNamaBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,8 +389,7 @@ public class InventarisAdminPanel extends javax.swing.JPanel {
  /////////////////
  
  
-// KODE SEBELUM DIPERBAIKI
-// KODE SETELAH DIPERBAIKI
+
 private void setupFormState(boolean isEditMode) {
     if (isEditMode) {
         if(btnAdd != null) btnAdd.setEnabled(false);
@@ -397,15 +397,15 @@ private void setupFormState(boolean isEditMode) {
         if(btnDelete != null) btnDelete.setEnabled(true);
     }   else {
         // Ini yang terjadi saat panel pertama kali muncul
-        if(btnUpdate != null) btnUpdate.setEnabled(false); // Tombol Perbarui non-aktif
-        if(btnDelete != null) btnDelete.setEnabled(false); // Tombol Hapus non-aktif
+        if(btnUpdate != null) btnUpdate.setEnabled(false); 
+        if(btnDelete != null) btnDelete.setEnabled(false); 
     }
-    // Panggilan ke clearForm() sudah dihapus. Lingkaran setan terputus!
+ 
 }
  
  
 private void displayBarangDetails(int rowIndex) {
-    try { // <-- TAMBAHKAN TRY DI SINI
+    try { 
         if (rowIndex >= 0 && rowIndex < tableModel.getRowCount()) {
             int idBarang = (int) tableModel.getValueAt(rowIndex, 0);
             
@@ -415,7 +415,7 @@ private void displayBarangDetails(int rowIndex) {
                 if(txtNamaBarang != null) txtNamaBarang.setText(barang.getNamaBarang());
                 if(txtKodeBarang != null) txtKodeBarang.setText(barang.getKodeBarang());
                 
-                // Set JComboBoxes Kategori dan Lokasi
+                // Set JComboBoxes 
                 if (comboKategori != null) selectComboBoxItem(comboKategori, barang.getIdKategori(), Kategori::getIdKategori);
                 if (comboLokasi != null)   selectComboBoxItem(comboLokasi, barang.getIdLokasi(), Lokasi::getIdLokasi);
                 
@@ -424,8 +424,8 @@ private void displayBarangDetails(int rowIndex) {
                 
                 if(txtKondisi != null) txtKondisi.setText(barang.getKondisi());
                 
-                // Baris ini hanya akan tercapai jika tidak ada error di atas
-                setupFormState(true); // Set ke mode edit
+              
+                setupFormState(true); 
             }
         }
     } catch (Exception e) { // <-- TAMBAHKAN CATCH DI SINI
@@ -480,7 +480,7 @@ private void displayBarangDetails(int rowIndex) {
 
         if (daftarBarang != null && !daftarBarang.isEmpty()) {
             for (Barang barang : daftarBarang) {
-                // Pastikan urutan dan jumlah kolom di sini cocok persis dengan JTable Design Mode (8 kolom)
+                
                 tableModel.addRow(new Object[]{
                     barang.getIdBarang(),
                     barang.getIdKategori(),
@@ -514,7 +514,7 @@ private void displayBarangDetails(int rowIndex) {
             int idKategori = selectedKategori.getIdKategori();
             int idLokasi = selectedLokasi.getIdLokasi();
             
-            String kondisi = txtKondisi.getText(); // Ambil dari JTextField
+            String kondisi = txtKondisi.getText(); 
 
 
             Barang newBarang = new Barang(

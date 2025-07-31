@@ -6,18 +6,18 @@ package com.mycompany.project.kel.desktop.sarpas.view;
 
 import com.mycompany.project.kel.desktop.sarpas.model.Barang;
 import com.mycompany.project.kel.desktop.sarpas.dao.BarangDAO;
-import java.awt.Font; // Untuk font (opsional)
+import java.awt.Font; 
 import javax.swing.JPanel;
 
-import javax.swing.JTable;      // Diperlukan untuk tabel
-import javax.swing.table.DefaultTableModel; // Diperlukan untuk model tabel
-import javax.swing.JLabel;      // Untuk label (jika ada di desain)
-import javax.swing.BoxLayout;   // Untuk layout jika pakai ini
-import java.awt.BorderLayout;   // Untuk layout utama panel
-import java.awt.FlowLayout;     // Untuk layout panel top
+import javax.swing.JTable;      
+import javax.swing.table.DefaultTableModel; 
+import javax.swing.JLabel;     
+import javax.swing.BoxLayout;   
+import java.awt.BorderLayout;   
+import java.awt.FlowLayout;     
 
 import java.util.List;
-import java.awt.Color; // Jika Color diperlukan
+import java.awt.Color; 
 
 
 import java.util.List;
@@ -42,7 +42,7 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
 
         // --- INI BARIS KRUSIAL UNTUK MENGHUBUNGKAN tableModel ---
         // tableModel akan mengambil model yang sudah diatur oleh initComponents()
-        // Pastikan nama JTable Anda di Design Mode adalah 'tblInventaris' (huruf 'I' besar)
+       
         tableModel = (DefaultTableModel) tblInventaris.getModel(); 
         
         System.out.println("DEBUG - InventarisSiswaPanel: tableModel berhasil dihubungkan. Jumlah kolom: " + tableModel.getColumnCount());
@@ -121,10 +121,10 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
                 .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(753, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 927, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -135,7 +135,7 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
                     .addComponent(txtCariBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCari, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -152,7 +152,7 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -195,11 +195,11 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
           
    
      private void setupSearchComponents() {
-        // Anda harus menambahkan komponen txtCariBarang dan btnCari secara visual
+        // harus menambahkan komponen txtCariBarang dan btnCari secara visual
         // di NetBeans GUI builder. Kemudian, pastikan nama variabelnya sesuai.
         // Kode ini hanya untuk memastikan action listener terpasang.
 
-        // Jika Anda ingin pencarian instan saat mengetik:
+        // Jika ingin pencarian instan saat mengetik:
         txtCariBarang.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
             public void insertUpdate(javax.swing.event.DocumentEvent e) {
                 performSearch();
@@ -223,14 +223,14 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
     }
 
     private void loadBarangData(String keyword) {
-        DefaultTableModel model = (DefaultTableModel) tblInventaris.getModel(); // Asumsi jTableBarang adalah nama tabel Anda
-        model.setRowCount(0); // Kosongkan tabel
+        DefaultTableModel model = (DefaultTableModel) tblInventaris.getModel(); 
+        model.setRowCount(0); 
 
         List<Barang> daftarBarang;
         if (keyword.isEmpty()) {
             daftarBarang = barangDAO.getAllBarang();
         } else {
-            daftarBarang = barangDAO.searchBarang(keyword); // Panggil metode pencarian baru
+            daftarBarang = barangDAO.searchBarang(keyword); 
         }
 
         for (Barang barang : daftarBarang) {
@@ -242,7 +242,7 @@ public class InventarisSiswaPanel extends javax.swing.JPanel {
                         barang.getKondisi(),
                         barang.getJumlahTersedia()
                 
-                // Tambahkan kolom lain sesuai model tabel Anda
+                // Tambahkan kolom lain sesuai model tabel 
             });
         }
     }
