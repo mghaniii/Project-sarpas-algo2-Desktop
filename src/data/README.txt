@@ -1,17 +1,18 @@
-Belum diselesaikan:
-Tampilan yang masih belum menarik harus di revisi dan dibuat seefesien dan efektiv mungkin
 
+# Nama dan Tugas Masing-masing Anggota
 
+1. Muhammad Ghani (Fitur Inventaris Barang dan Form Login dan menintegrasikan keseluruhan tugas )
+Backend role siswa diantaranya pada bagian menampilkan home/profile dll
 
-Tugas Masing-masing Anggota
-1. Muhammad Ghani (Fitur Inventaris Barang dan Form Login dan integrasikan)
-Login controller. Backend role siswa diantaranya pada bagian menampilkan home/profile
-2. Dafa Irsyad Nashrullah (Peminjaman fasilitas dan  Riwayat siswa)
-sudah tahap penyelesaian mendesain tampilan UI/UX 
-3. Dimas Arya Purnama Alam (Pelaporan kerusakan dan bagian Front End)
-4. Sandika Pryatna (bagian Front End, Pemeliharaan berkala dan bagian login )
-sudah tahap penyelesaian mendesain tampilan 
+2. Dafa Irsyad Nashrullah (Mendesain laporan kerusakan Peminjaman fasilitas, mendesain tampilan UI/UX  dan admin dan Admin?teknisi update status peminjaman )
+  - https://balsamiq.cloud/sa37fei/pbym5u5/r03F2 (Desain)
+
+3. Dimas Arya Purnama Alam (Pelaporan kerusakan, fitur pemeliharaan berkala teknisi /perawatan  (bagian Front End))
+
+4. Sandika Pryatna (bagian Front End, pemeliharaan berkala, sidebar kiri dan bagian login  )
+
 5. Resti Istihany Putri (Dashboard status asset dan peminjaman form)
+
 
 #Arsitektur dan Desain Sistem
 
@@ -27,7 +28,7 @@ Contoh: User.java, Barang.java, Peminjaman.java
 
 - DAO (Data Access Object): Ini adalah lapisan jembatan antara aplikasi dan database MySQL. Setiap kelas model memiliki DAO-nya sendiri yang bertanggung jawab untuk semua operasi database (CRUD: Create, Read, Update, Delete) yang berhubungan dengan model tersebut. Ini memisahkan logika bisnis dari logika database.
 
-Contoh: UserDAO.java, BarangDAO.java, PeminjamanDAO.java
+Contoh: UserDAO.java, BarangDAO.java, PeminjamanDAO.java dll
 
 Arsitektur ini membuat kode menjadi lebih terstruktur, mudah dikelola, dan mudah dikembangkan di masa depan.
 
@@ -73,6 +74,8 @@ Pengguna umum yang berinteraksi dengan fasilitas sekolah.
 4. Teknologi yang Digunakan
 
 Bahasa Pemrograman: Java
+
+Versi JDK : 24
 
 Framework GUI: Java Swing
 
